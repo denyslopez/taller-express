@@ -3,7 +3,7 @@ import EmailCapture from "@/components/ui/EmailCapture";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-[95vh] md:min-h-[90vh] flex items-start md:items-center pt-32 md:py-20 pb-12 bg-te-bg overflow-hidden">
+    <section className="relative min-h-[95vh] md:min-h-[90vh] flex items-start md:items-center pt-24 md:py-20 pb-12 bg-te-bg overflow-hidden">
       
       {/* 1. Desktop Background Layer (hidden on mobile) */}
       <div className="absolute inset-0 z-0 hidden md:block select-none pointer-events-none">
