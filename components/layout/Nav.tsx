@@ -25,13 +25,13 @@ export default function Nav() {
 
         {/* Navigation Links - Desktop Only */}
         <nav className="hidden md:flex items-center gap-10">
-          <Link href="/blog" className="font-body text-[14.4px] font-medium text-te-muted hover:text-white transition-colors duration-200">
+          <Link href="/blog" className="font-body text-[0.95rem] font-medium text-te-muted hover:text-white transition-colors duration-200">
             Artículos
           </Link>
-          <Link href="/guia" className="font-body text-[14.4px] font-medium text-te-muted hover:text-white transition-colors duration-200">
+          <Link href="/guia" className="font-body text-[0.95rem] font-medium text-te-muted hover:text-white transition-colors duration-200">
             La Guía
           </Link>
-          <Link href="/blog?cat=comunidad" className="font-body text-[14.4px] font-medium text-te-muted hover:text-white transition-colors duration-200">
+          <Link href="/blog?cat=comunidad" className="font-body text-[0.95rem] font-medium text-te-muted hover:text-white transition-colors duration-200">
             Comunidad
           </Link>
         </nav>

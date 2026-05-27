@@ -27,11 +27,11 @@ export default function GuiaPage() {
             Próximamente &middot; Recurso Gratuito
           </span>
           
-          <h1 className="font-display font-extrabold text-[36px] md:text-[48px] leading-tight text-white tracking-tight">
+          <h1 className="font-display font-extrabold text-[2.25rem] md:text-[3rem] leading-tight text-white tracking-tight">
             La guía que todo dueño de vehículo en El Salvador necesita.
           </h1>
 
-          <p className="font-body text-zinc-400 text-sm md:text-[15.5px] leading-relaxed">
+          <p className="font-body text-zinc-400 text-sm md:text-[0.97rem] leading-relaxed">
             Estamos terminando de redactar un manual definitivo que te ahorrará cientos de dólares en repuestos y mantenimiento. Aprenderás a comunicarte mejor con tu mecánico, qué preguntas hacer para evitar cobros sorpresa y cómo interpretar las verdaderas prioridades de reparación de tu carro.
           </p>
 

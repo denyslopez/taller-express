@@ -24,12 +24,12 @@ export default function Intriga() {
         </span>
 
         {/* Headline */}
-        <h2 className="te-anime-text font-display font-extrabold text-[32px] md:text-[48px] lg:text-[56px] leading-tight tracking-tight text-white max-w-2xl">
+        <h2 className="te-anime-text font-display font-extrabold text-3xl md:text-5xl lg:text-6xl leading-tight tracking-tight text-white max-w-2xl">
           Llevamos meses entendiendo el problema.
         </h2>
 
         {/* Subhead */}
-        <p className="font-body text-base md:text-[17.3px] text-zinc-400 max-w-xl font-light leading-relaxed">
+        <p className="font-body text-base md:text-[1.08rem] text-zinc-400 max-w-xl font-light leading-relaxed">
           La solución está en camino. Cuando esté lista, tú eres el primero en saberlo.
         </p>
 

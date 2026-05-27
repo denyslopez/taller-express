@@ -21,7 +21,7 @@ export default async function BlogPage() {
           <span className="font-body text-[12px] font-bold uppercase tracking-widest text-te-orange">
             Blog Editorial
           </span>
-          <h1 className="font-display font-extrabold text-[36px] md:text-[50px] leading-tight text-white tracking-tight">
+          <h1 className="font-display font-extrabold text-[2.25rem] md:text-[3.125rem] leading-tight text-white tracking-tight">
             Artículos y Consejos
           </h1>
           <p className="font-body text-zinc-400 text-sm md:text-base leading-relaxed">

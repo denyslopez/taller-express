@@ -53,7 +53,7 @@ export default function Hero() {
         </h1>
 
         {/* Subtitle - Left Aligned */}
-        <p className="font-body text-sm sm:text-base md:text-[17.3px] md:leading-[28.8px] text-te-muted max-w-[550px] font-light">
+        <p className="font-body text-base md:text-[1.08rem] md:leading-[1.66] text-te-muted max-w-[550px] font-light">
           Contenido práctico sobre mantenimiento, precios y cuidado de tu vehículo. Hecho para dueños de carro en El Salvador.
         </p>
 

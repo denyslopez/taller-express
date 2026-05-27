@@ -74,7 +74,7 @@ export default async function ArticlePage({ params }: Props) {
         </span>
 
         {/* Article H1 Title */}
-        <h1 className="te-anime-text font-display font-extrabold text-[32px] sm:text-[44px] md:text-[52px] leading-[1.1] tracking-tight text-white mb-6">
+        <h1 className="te-anime-text font-display font-extrabold text-[2rem] sm:text-[2.75rem] md:text-[3.25rem] leading-[1.1] tracking-tight text-white mb-6">
           {article.title}
         </h1>
 
@@ -102,7 +102,7 @@ export default async function ArticlePage({ params }: Props) {
             <h3 className="font-display font-bold text-xl text-white">
               ¿Te fue útil? Hay más contenido como este.
             </h3>
-            <p className="font-body text-[14px] text-te-muted max-w-md">
+            <p className="font-body text-[0.95rem] text-te-muted max-w-md">
               Regístrate y te enviaremos directamente a tu correo los mejores consejos de mantenimiento sin letra pequeña.
             </p>
           </div>

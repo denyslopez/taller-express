@@ -26,12 +26,12 @@ export default function LeadMagnet() {
             </span>
 
             {/* Headline */}
-            <h2 className="font-display font-bold text-3xl md:text-[38px] leading-tight tracking-tight text-white">
+            <h2 className="font-display font-bold text-3xl md:text-[2.35rem] leading-tight tracking-tight text-white">
               Todo lo que necesitas saber antes de tu próxima visita al taller.
             </h2>
 
             {/* Subheading */}
-            <p className="font-body text-[14.4px] leading-relaxed text-te-muted">
+            <p className="font-body text-[0.95rem] leading-relaxed text-te-muted">
               Estamos preparando una guía práctica para dueños de vehículo en El Salvador. Sin tecnicismos. Sin letra chica. Déjanos tu correo y eres el primero en recibirla.
             </p>
 
