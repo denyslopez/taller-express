@@ -1,26 +1,172 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #080f1f;
+  --foreground: #f8fafc;
+
+  /* Figma Design Tokens */
+  --te-bg-primary: #080f1f;
+  --te-bg-alt: #050811;
+  --te-text-primary: #f8fafc;
+  --te-text-muted: #94a3b8;
+  --te-text-subtle: #6b7280;
+
+  --te-orange: #ff8c1a;
+  --te-orange-hover: #ffb14a;
+
+  --te-glass-bg: rgba(255, 255, 255, 0.03);
+  --te-glass-border: rgba(255, 255, 255, 0.06);
+
+  --te-input-bg: rgba(255, 255, 255, 0.06);
+  --te-input-border: rgba(255, 255, 255, 0.08);
+
+  --te-badge-bg: rgba(255, 255, 255, 0.04);
+  --te-badge-border: rgba(255, 255, 255, 0.08);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@theme {
+  --color-te-bg: var(--te-bg-primary);
+  --color-te-bg-alt: var(--te-bg-alt);
+  --color-te-text: var(--te-text-primary);
+  --color-te-muted: var(--te-text-muted);
+  --color-te-subtle: var(--te-text-subtle);
+
+  --color-te-orange: var(--te-orange);
+  --color-te-orange-hover: var(--te-orange-hover);
+
+  --font-display: var(--font-manrope), sans-serif;
+  --font-body: var(--font-inter), sans-serif;
+
+  --shadow-te-ebook: 0px 40px 40px rgba(0, 0, 0, 0.45);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* Custom Base Styles */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--te-bg-primary);
+  color: var(--te-text-primary);
+  font-family: var(--font-inter), sans-serif;
+  overflow-x: hidden;
+}
+
+/* Interactive Component: View-more (derived from Magzin) */
+.view-more {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  text-decoration: none;
+  z-index: 1;
+}
+
+.view-more .circle {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  display: block;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 9999px;
+  background-color: var(--te-orange);
+  z-index: 1;
+}
+
+.view-more:hover .circle {
+  width: 100%;
+}
+
+.view-more .button-text {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 2.5rem;
+  padding-left: 3.25rem;
+  padding-right: 1.5rem;
+  font-family: var(--font-inter), sans-serif;
+  font-weight: 600;
+  color: var(--te-text-primary);
+  white-space: nowrap;
+  z-index: 2;
+}
+
+.view-more:hover .button-text {
+  color: #111111;
+}
+
+
+/* Interactive Component: Arrow Box hover animation */
+.arrow-box {
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  border: 1px solid var(--te-glass-border);
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.arrow-box-wrapper:hover .arrow-box {
+  background-color: var(--te-orange);
+  border-color: var(--te-orange);
+  color: #111111;
+  transform: rotate(-45deg);
+}
+
+/* Base Prose styling for MDX articles */
+.prose {
+  color: var(--te-text-muted);
+  font-size: 1.08rem;
+  line-height: 1.8;
+}
+
+.prose h1, .prose h2, .prose h3, .prose h4 {
+  color: var(--te-text-primary);
+  font-family: var(--font-manrope), sans-serif;
+  font-weight: 700;
+  margin-top: 1.75em;
+  margin-bottom: 0.5em;
+}
+
+.prose h2 {
+  font-size: 1.75rem;
+  border-bottom: 1px solid var(--te-glass-border);
+  padding-bottom: 0.3em;
+}
+
+.prose p {
+  margin-bottom: 1.25em;
+}
+
+.prose a {
+  color: var(--te-orange);
+  font-weight: 600;
+  text-decoration: underline;
+  transition: color 0.2s ease;
+}
+
+.prose a:hover {
+  color: var(--te-orange-hover);
+}
+
+.prose ul {
+  list-style-type: disc;
+  padding-left: 1.5em;
+  margin-bottom: 1.25em;
+}
+
+.prose li {
+  margin-bottom: 0.5em;
+}
+
+/* prefers-reduced-motion - Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .te-split-char,
+  .te-anime-top,
+  .te-anime-left {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
 }
