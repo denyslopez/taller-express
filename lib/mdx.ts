@@ -32,6 +32,25 @@ export async function parseArticleFile(filename: string): Promise<Article> {
   const fileContent = fs.readFileSync(filePath, "utf-8");
   const { data, content } = matter(fileContent);
 
+  // Fallbacks to handle both schema variations (original CLAUDE.md and user's updated version)
+  const title = data.title;
+  const slug = data.slug;
+  const date = data.date || data.publishedAt;
+  const category = data.category;
+  const readTime = data.readTime || (data.readingTime ? `${data.readingTime} min` : undefined);
+  const excerpt = data.excerpt || data.description;
+
+  const normalizedData = {
+    title,
+    slug,
+    date,
+    category,
+    readTime,
+    excerpt,
+    canal: data.canal || "ambos",
+    segmento: data.segmento || "todos",
+  };
+
   // Validate required frontmatter fields (CLAUDE.md Capa 8)
   const requiredFields: (keyof ArticleFrontmatter)[] = [
     "title",
@@ -43,7 +62,7 @@ export async function parseArticleFile(filename: string): Promise<Article> {
   ];
 
   for (const field of requiredFields) {
-    if (!data[field]) {
+    if (!normalizedData[field]) {
       throw new Error(
         `Error de validación en ${filename}: Falta el campo requerido del frontmatter '${field}'`
       );
@@ -51,14 +70,7 @@ export async function parseArticleFile(filename: string): Promise<Article> {
   }
 
   return {
-    title: data.title,
-    slug: data.slug,
-    date: data.date,
-    category: data.category,
-    readTime: data.readTime,
-    excerpt: data.excerpt,
-    canal: data.canal || "ambos",
-    segmento: data.segmento || "todos",
+    ...normalizedData,
     content,
   };
 }
