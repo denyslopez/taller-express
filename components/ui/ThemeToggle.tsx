@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-export default function ThemeToggle() {
+export default function ThemeToggle({ isMobile = false }: { isMobile?: boolean }) {
   const [theme, setTheme] = useState<"dark" | "light">("dark");
 
   useEffect(() => {
@@ -23,44 +23,29 @@ export default function ThemeToggle() {
     }
   };
 
+  const buttonClasses = isMobile
+    ? "text-te-muted hover:text-te-orange transition-colors duration-300 cursor-pointer select-none outline-none group flex items-center justify-center p-2"
+    : "w-10 h-10 rounded-full bg-te-glass-bg border border-te-glass-border hover:border-te-orange/30 hover:bg-te-glass-bg/10 transition-all duration-300 flex items-center justify-center cursor-pointer select-none outline-none group text-te-muted hover:text-te-text";
+
   return (
     <button
       onClick={toggleTheme}
       type="button"
-      className="w-10 h-10 rounded-full bg-te-glass-bg border border-te-glass-border hover:border-te-orange/30 hover:bg-te-glass-bg/10 transition-all duration-300 flex items-center justify-center cursor-pointer select-none outline-none group text-te-muted hover:text-te-text"
+      className={buttonClasses}
       aria-label="Cambiar tema"
     >
-      {theme === "dark" ? (
-        // Sun Icon (rotates 45deg on hover)
-        <svg
-          className="w-5 h-5 transition-transform duration-500 group-hover:rotate-45"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m12.728 12.728l.707.707M12 8a4 4 0 100 8 4 4 0 000-8z"
-          />
-        </svg>
-      ) : (
-        // Moon Icon (rotates slightly on hover)
-        <svg
-          className="w-5 h-5 transition-transform duration-500 group-hover:-rotate-12"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
-          />
-        </svg>
-      )}
+      <svg
+        className="w-5 h-5 transition-transform duration-500 group-hover:rotate-180"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 20 20"
+        fill="none"
+      >
+        <path
+          d="M10.0018 0.666992C4.85543 0.666992 0.666656 4.85439 0.666656 10.0008C0.666656 15.1471 4.85543 19.3359 10.0018 19.3359C15.1482 19.3359 19.337 15.1471 19.337 10.0008C19.337 4.85439 15.1482 0.666992 10.0018 0.666992ZM10.7212 2.13662C14.7526 2.49852 17.8982 5.87302 17.8982 10.0008C17.8982 14.1285 14.7526 17.503 10.7212 17.8649V2.13662Z"
+          fill="currentColor"
+        />
+      </svg>
     </button>
   );
 }
+
