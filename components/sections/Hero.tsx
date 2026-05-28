@@ -37,7 +37,7 @@ export default function Hero() {
       </div>
 
       {/* Hero Content Container - Aligned to the Left, and placed at the Top on Mobile */}
-      <div className="relative z-10 max-w-[1280px] mx-auto w-full px-8 md:px-12 flex flex-col items-start text-left gap-5 md:gap-6">
+      <div className="relative z-10 max-w-[1280px] mx-auto w-full px-8 flex flex-col items-start text-left gap-5 md:gap-6">
         
         {/* Eyebrow with orange dot */}
         <div className="te-anime-top inline-flex items-center gap-2 bg-white/[0.04] border border-white/[0.08] px-4 py-2 rounded-full shadow-sm">
