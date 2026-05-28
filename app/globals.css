@@ -65,6 +65,9 @@ html.light {
   --color-te-glass-bg: var(--te-glass-bg);
   --color-te-glass-border: var(--te-glass-border);
 
+  --color-te-input-bg: var(--te-input-bg);
+  --color-te-input-border: var(--te-input-border);
+
   --font-display: var(--font-manrope), sans-serif;
   --font-body: var(--font-inter), sans-serif;
 

@@ -97,7 +97,7 @@ export default function EmailCapture({
               "font-body text-[14.4px] px-6 py-4 rounded-[18px] w-full border outline-none transition-all duration-300",
               variant === "dark"
                 ? "bg-white/10 border-white/10 text-white placeholder-zinc-500 focus:border-te-orange/50 focus:bg-white/15"
-                : "bg-white/5 border-white/6 text-white placeholder-zinc-500 focus:border-te-orange/50 focus:bg-white/10"
+                : "bg-te-input-bg border-te-input-border text-te-text placeholder-te-muted focus:border-te-orange/50 focus:bg-te-input-bg/80"
             )}
           />
         )}
@@ -114,7 +114,7 @@ export default function EmailCapture({
               "font-body text-[14.4px] px-6 py-4 rounded-full flex-grow border outline-none transition-all duration-300",
               variant === "dark"
                 ? "bg-white/10 border-white/10 text-white placeholder-zinc-500 focus:border-te-orange/50 focus:bg-white/15"
-                : "bg-white/5 border-white/6 text-white placeholder-zinc-500 focus:border-te-orange/50 focus:bg-white/10",
+                : "bg-te-input-bg border-te-input-border text-te-text placeholder-te-muted focus:border-te-orange/50 focus:bg-te-input-bg/80",
               showName && "rounded-[18px]" // matching border radius scales per design.md
             )}
           />

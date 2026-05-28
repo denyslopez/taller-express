@@ -48,12 +48,12 @@ export default function Hero() {
         </div>
 
         {/* H1 Heading - Left Aligned and fluid text sizing to scale smoothly across any viewport */}
-        <h1 className="te-anime-text font-display font-extrabold text-[clamp(1.6rem,6.8vw,4.5rem)] leading-[1.05] tracking-tight text-te-text max-w-[640px] font-sans">
+        <h1 className="te-anime-text font-display font-extrabold text-[clamp(1.6rem,6.8vw,4.5rem)] leading-[1.05] tracking-tight text-te-text max-w-[640px] font-sans text-left">
           <span className="whitespace-nowrap">El mantenimiento</span> de tu carro no debería ser tan <span className="text-te-orange">complicado.</span>
         </h1>
 
         {/* Subtitle - Left Aligned */}
-        <p className="font-body text-base md:text-[1.08rem] md:leading-[1.66] text-te-muted max-w-[550px] font-light">
+        <p className="font-body text-base md:text-[1.08rem] md:leading-[1.66] text-te-muted max-w-[550px] font-light text-left">
           Contenido práctico sobre mantenimiento, precios y cuidado de tu vehículo. Hecho para dueños de carro en El Salvador.
         </p>
 
