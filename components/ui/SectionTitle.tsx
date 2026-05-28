@@ -27,7 +27,7 @@ export default function SectionTitle({
             <path d="M12 0L14.8 9.2L24 12L14.8 14.8L12 24L9.2 14.8L0 12L9.2 9.2L12 0Z" />
           </svg>
 
-          <h2 className="te-anime-text font-display font-bold text-2xl md:text-[28px] tracking-tight text-te-text leading-none">
+          <h2 className="te-anime-text font-display font-semibold text-2xl md:text-[28px] tracking-tight text-te-text leading-none">
             {title}
           </h2>
         </div>

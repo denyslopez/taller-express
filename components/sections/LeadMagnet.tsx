@@ -26,7 +26,7 @@ export default function LeadMagnet() {
             </span>
 
             {/* Headline */}
-            <h2 className="font-display font-bold text-3xl md:text-[2.35rem] leading-tight tracking-tight text-te-text">
+            <h2 className="font-display font-semibold text-3xl md:text-[2.35rem] leading-tight tracking-tight text-te-text">
               Todo lo que necesitas saber antes de tu próxima visita al taller.
             </h2>
 

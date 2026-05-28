@@ -24,7 +24,7 @@ export default function Intriga() {
         </span>
 
         {/* Headline */}
-        <h2 className="te-anime-text font-display font-extrabold text-3xl md:text-5xl lg:text-6xl leading-tight tracking-tight text-te-text max-w-2xl">
+        <h2 className="te-anime-text font-display font-semibold text-3xl md:text-5xl lg:text-6xl leading-tight tracking-tight text-te-text max-w-2xl">
           Llevamos meses entendiendo el problema.
         </h2>
 
