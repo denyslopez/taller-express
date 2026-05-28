@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { format, parseISO } from "date-fns";
 import { es } from "date-fns/locale";
 
@@ -10,6 +11,9 @@ interface ArticleCardProps {
     category: string;
     readTime: string;
     date: string;
+    ogImage?: string;
+    author?: string;
+    authorImage?: string;
   };
 }
 
@@ -29,47 +33,95 @@ export default function ArticleCard({ article }: ArticleCardProps) {
   return (
     <Link
       href={`/blog/${article.slug}`}
-      className="arrow-box-wrapper te-anime-top block bg-white/[0.03] border border-white/[0.06] hover:border-white/[0.12] rounded-[28px] p-8 relative overflow-hidden transition-all duration-300 hover:bg-white/[0.05] hover:scale-[1.01] cursor-pointer"
+      className="group te-anime-top relative block w-full aspect-[4.5/4] sm:aspect-[4/3.8] rounded-[32px] overflow-hidden border border-te-glass-border/40 shadow-xl transition-all duration-500 hover:scale-[1.01] hover:shadow-2xl cursor-pointer bg-te-bg-alt"
     >
-      <div className="flex flex-col gap-5 h-full justify-between">
-        <div className="flex flex-col gap-4">
-          {/* Header Row: Category Badge & Arrow Box */}
-          <div className="flex items-center justify-between w-full">
-            <span className="inline-block px-3 py-1.5 text-[11.5px] font-bold uppercase tracking-wider rounded-full bg-[#ff8c1a]/12 border border-[#ff8c1a]/20 text-te-orange">
-              {categoryNames[article.category] || article.category}
-            </span>
+      {/* Background Image Container */}
+      <div className="absolute inset-0 z-0 w-full h-full">
+        <Image
+          src={article.ogImage || "/images/blog/default.jpg"}
+          alt={article.title}
+          fill
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+          priority
+        />
+        {/* Overlay gradient to darken bottom for readability */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-black/10 transition-opacity duration-500 group-hover:from-black/90" />
+      </div>
 
-            {/* Rotating Arrow Indicator */}
-            <div className="arrow-box w-10 h-10 text-white flex items-center justify-center">
-              <svg
-                className="w-4 h-4 transition-transform duration-300"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-              >
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg>
-            </div>
+      {/* Floating Category Badge (Top Left) */}
+      <div className="absolute top-6 left-6 z-10">
+        <span className="inline-block px-3.5 py-1.5 text-[11px] font-extrabold uppercase tracking-widest rounded-full bg-te-bg-alt/75 backdrop-blur-md border border-te-glass-border/60 text-te-orange shadow-sm">
+          {categoryNames[article.category] || article.category}
+        </span>
+      </div>
+
+      {/* Floating Glassmorphism Panel (Bottom) */}
+      <div className="absolute bottom-6 left-6 right-6 z-10 bg-te-bg-alt/75 backdrop-blur-xl border border-te-glass-border/50 rounded-[24px] p-5 md:p-6 flex flex-col gap-3 shadow-lg transition-colors duration-500 group-hover:bg-te-bg-alt/85">
+        
+        {/* Title */}
+        <h3 className="font-display font-semibold text-lg md:text-[20px] leading-snug text-te-text tracking-tight line-clamp-2 transition-colors duration-300 group-hover:text-te-orange">
+          {article.title}
+        </h3>
+
+        {/* Excerpt */}
+        <p className="font-body text-[13px] text-te-muted/95 leading-relaxed line-clamp-2">
+          {article.excerpt}
+        </p>
+
+        {/* Footer Metadata & Author Info */}
+        <div className="flex flex-wrap items-center gap-2 sm:gap-3 border-t border-te-glass-border/30 pt-4 mt-1">
+          {/* Author Avatar */}
+          <div className="relative w-7 h-7 rounded-full overflow-hidden border border-te-glass-border/40 shrink-0">
+            <Image
+              src={article.authorImage || "/images/author-1.png"}
+              alt={article.author || "Taller Express"}
+              fill
+              sizes="28px"
+              className="object-cover"
+            />
           </div>
-
-          {/* Article Title */}
-          <h3 className="font-display font-semibold text-xl md:text-[22px] leading-tight text-te-text line-clamp-2 tracking-tight group-hover:text-te-orange transition-colors duration-200">
-            {article.title}
-          </h3>
-
-          {/* Excerpt */}
-          <p className="font-body text-[14.4px] text-te-muted leading-relaxed line-clamp-2">
-            {article.excerpt}
-          </p>
+          {/* Author Name */}
+          <span className="font-body text-[12px] font-bold text-te-text shrink-0">
+            {article.author || "Taller Express"}
+          </span>
+          {/* Divider Bullet */}
+          <span className="text-te-muted/40 text-[10px] shrink-0">●</span>
+          {/* Date */}
+          <span className="font-body text-[11px] text-te-muted shrink-0">
+            {formattedDate}
+          </span>
+          {/* Divider Bullet */}
+          <span className="text-te-muted/40 text-[10px] hidden xs:inline shrink-0">●</span>
+          {/* Read Time */}
+          <span className="font-body text-[11px] text-te-muted hidden xs:inline shrink-0">
+            {article.readTime}
+          </span>
         </div>
+      </div>
 
-        {/* Footer Metadata */}
-        <div className="flex items-center gap-4 text-[12.8px] text-te-subtle border-t border-white/5 pt-4 mt-2">
-          <span>{formattedDate}</span>
-          <span className="w-1.5 h-1.5 rounded-full bg-white/10" />
-          <span>{article.readTime}</span>
-        </div>
+      {/* Floating Corner Arrow Button */}
+      <div className="absolute bottom-4 right-4 w-12 h-12 rounded-full border border-te-glass-border bg-te-bg-alt/90 flex items-center justify-center text-te-text transition-all duration-300 group-hover:bg-te-orange group-hover:text-te-bg-alt group-hover:scale-105 z-20 shadow-xl">
+        <svg
+          className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-0.5"
+          viewBox="0 0 24 24"
+          fill="none"
+        >
+          <path
+            d="M13.75 6.75L19.25 12L13.75 17.25"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M19 12H4.75"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
       </div>
     </Link>
   );

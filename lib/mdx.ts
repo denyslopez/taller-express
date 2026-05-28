@@ -13,6 +13,9 @@ export interface ArticleFrontmatter {
   excerpt: string;
   canal?: "facebook" | "instagram" | "ambos";
   segmento?: "todos" | "mujer" | "joven" | "profesional";
+  ogImage?: string;
+  author?: string;
+  authorImage?: string;
 }
 
 export interface Article extends ArticleFrontmatter {
@@ -39,6 +42,9 @@ export async function parseArticleFile(filename: string): Promise<Article> {
   const category = data.category;
   const readTime = data.readTime || (data.readingTime ? `${data.readingTime} min` : undefined);
   const excerpt = data.excerpt || data.description;
+  const ogImage = data.ogImage || `/images/blog/${slug}-og.png`;
+  const author = data.author || "Taller Express";
+  const authorImage = data.authorImage || "/images/author-1.png";
 
   const normalizedData = {
     title,
@@ -49,6 +55,9 @@ export async function parseArticleFile(filename: string): Promise<Article> {
     excerpt,
     canal: data.canal || "ambos",
     segmento: data.segmento || "todos",
+    ogImage,
+    author,
+    authorImage,
   };
 
   // Validate required frontmatter fields (CLAUDE.md Capa 8)
