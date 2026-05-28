@@ -68,7 +68,7 @@ html.light {
   --color-te-input-bg: var(--te-input-bg);
   --color-te-input-border: var(--te-input-border);
 
-  --font-display: var(--font-manrope), sans-serif;
+  --font-display: var(--font-sora), sans-serif;
   --font-body: var(--font-inter), sans-serif;
 
   --shadow-te-ebook: 0px 40px 40px rgba(0, 0, 0, 0.45);
@@ -156,7 +156,7 @@ body {
 
 .prose h1, .prose h2, .prose h3, .prose h4 {
   color: var(--te-text-primary);
-  font-family: var(--font-manrope), sans-serif;
+  font-family: var(--font-sora), sans-serif;
   font-weight: 700;
   margin-top: 1.75em;
   margin-bottom: 0.5em;
