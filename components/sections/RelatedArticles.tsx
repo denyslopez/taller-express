@@ -12,8 +12,8 @@ export default async function RelatedArticles({ slug, category }: RelatedArticle
   if (related.length === 0) return null;
 
   return (
-    <div className="w-full mt-20 pt-16 border-t border-white/5">
-      <h3 className="font-display font-bold text-xl md:text-2xl text-white mb-8 tracking-tight">
+    <div className="w-full mt-20 pt-16 border-t border-te-glass-border">
+      <h3 className="font-display font-bold text-xl md:text-2xl text-te-text mb-8 tracking-tight">
         Artículos relacionados
       </h3>
       

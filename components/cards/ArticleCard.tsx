@@ -54,7 +54,7 @@ export default function ArticleCard({ article }: ArticleCardProps) {
           </div>
 
           {/* Article Title */}
-          <h3 className="font-display font-bold text-xl md:text-[22px] leading-tight text-white line-clamp-2 tracking-tight group-hover:text-te-orange transition-colors duration-200">
+          <h3 className="font-display font-bold text-xl md:text-[22px] leading-tight text-te-text line-clamp-2 tracking-tight group-hover:text-te-orange transition-colors duration-200">
             {article.title}
           </h3>
 
