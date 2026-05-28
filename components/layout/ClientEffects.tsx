@@ -32,6 +32,7 @@ export default function ClientEffects() {
           const fragment = document.createDocumentFragment();
 
           words.forEach((word) => {
+            if (word === "") return;
             if (word.trim() === "") {
               const spaceSpan = document.createElement("span");
               spaceSpan.style.display = "inline-block";
