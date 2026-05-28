@@ -48,8 +48,8 @@ export default function Hero() {
         </div>
 
         {/* H1 Heading - Left Aligned and fluid text sizing to scale smoothly across any viewport */}
-        <h1 className="te-anime-text font-display font-extrabold text-[clamp(1.6rem,6.8vw,4.5rem)] leading-[1.05] tracking-tight text-te-text max-w-[640px] font-sans text-left">
-          <span className="whitespace-nowrap md:whitespace-normal">El mantenimiento</span> de tu carro no debería ser tan <span className="text-te-orange">complicado.</span>
+        <h1 className="te-anime-text font-display font-extrabold text-[clamp(1.6rem,6.8vw,4.5rem)] leading-[1.05] tracking-tight text-te-text max-w-[640px] md:max-w-[900px] font-sans text-left">
+          <span className="whitespace-nowrap">El mantenimiento</span> de tu carro no debería ser tan <span className="text-te-orange">complicado.</span>
         </h1>
 
         {/* Subtitle - Left Aligned */}
