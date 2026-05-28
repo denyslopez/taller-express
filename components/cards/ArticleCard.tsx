@@ -33,10 +33,10 @@ export default function ArticleCard({ article }: ArticleCardProps) {
   return (
     <Link
       href={`/blog/${article.slug}`}
-      className="group te-anime-top relative block w-full aspect-[4.5/4] sm:aspect-[4/3.8] rounded-[32px] overflow-hidden border border-te-glass-border/40 shadow-xl transition-all duration-500 hover:scale-[1.01] hover:shadow-2xl cursor-pointer bg-te-bg-alt"
+      className="group te-anime-top relative block w-full rounded-[32px] cursor-pointer pb-28 sm:pb-32"
     >
-      {/* Background Image Container */}
-      <div className="absolute inset-0 z-0 w-full h-full">
+      {/* Outer Card / Background Image Container */}
+      <div className="relative w-full aspect-[1.2/1] rounded-[32px] overflow-hidden border border-te-glass-border/30 shadow-xl bg-te-bg-alt">
         <Image
           src={article.ogImage || "/images/blog/default.jpg"}
           alt={article.title}
@@ -46,18 +46,18 @@ export default function ArticleCard({ article }: ArticleCardProps) {
           priority
         />
         {/* Overlay gradient to darken bottom for readability */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-black/10 transition-opacity duration-500 group-hover:from-black/90" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-black/5 transition-opacity duration-500 group-hover:from-black/75" />
+
+        {/* Floating Category Badge (Top Left) */}
+        <div className="absolute top-6 left-6 z-10">
+          <span className="inline-block px-3.5 py-1.5 text-[11px] font-extrabold uppercase tracking-widest rounded-full bg-black/60 backdrop-blur-md border border-white/10 text-te-orange shadow-sm">
+            {categoryNames[article.category] || article.category}
+          </span>
+        </div>
       </div>
 
-      {/* Floating Category Badge (Top Left) */}
-      <div className="absolute top-6 left-6 z-10">
-        <span className="inline-block px-3.5 py-1.5 text-[11px] font-extrabold uppercase tracking-widest rounded-full bg-te-bg-alt/75 backdrop-blur-md border border-te-glass-border/60 text-te-orange shadow-sm">
-          {categoryNames[article.category] || article.category}
-        </span>
-      </div>
-
-      {/* Floating Glassmorphism Panel (Bottom) */}
-      <div className="absolute bottom-6 left-6 right-6 z-10 bg-te-bg-alt/75 backdrop-blur-xl border border-te-glass-border/50 rounded-[24px] p-5 md:p-6 flex flex-col gap-3 shadow-lg transition-colors duration-500 group-hover:bg-te-bg-alt/85">
+      {/* Floating Glassmorphism Panel: Positioned absolutely, overflowing the bottom edge by -70px / -100px */}
+      <div className="absolute bottom-6 sm:bottom-8 left-4 right-4 sm:left-6 sm:right-6 z-10 bg-te-bg-alt/45 dark:bg-te-bg-alt/45 backdrop-blur-xl border border-te-glass-border/40 rounded-[24px] p-5 md:p-6 flex flex-col gap-3 shadow-2xl transition-all duration-500 group-hover:bg-te-bg-alt/55">
         
         {/* Title */}
         <h3 className="font-display font-semibold text-lg md:text-[20px] leading-snug text-te-text tracking-tight line-clamp-2 transition-colors duration-300 group-hover:text-te-orange">
@@ -70,9 +70,9 @@ export default function ArticleCard({ article }: ArticleCardProps) {
         </p>
 
         {/* Footer Metadata & Author Info */}
-        <div className="flex flex-wrap items-center gap-2 sm:gap-3 border-t border-te-glass-border/30 pt-4 mt-1">
+        <div className="flex flex-wrap items-center gap-2 sm:gap-3 border-t border-te-glass-border/20 pt-4 mt-1">
           {/* Author Avatar */}
-          <div className="relative w-7 h-7 rounded-full overflow-hidden border border-te-glass-border/40 shrink-0">
+          <div className="relative w-7 h-7 rounded-full overflow-hidden border border-te-glass-border/30 shrink-0">
             <Image
               src={article.authorImage || "/images/author-1.png"}
               alt={article.author || "Taller Express"}
@@ -100,8 +100,8 @@ export default function ArticleCard({ article }: ArticleCardProps) {
         </div>
       </div>
 
-      {/* Floating Corner Arrow Button */}
-      <div className="absolute bottom-4 right-4 w-12 h-12 rounded-full border border-te-glass-border bg-te-bg-alt/90 flex items-center justify-center text-te-text transition-all duration-300 group-hover:bg-te-orange group-hover:text-te-bg-alt group-hover:scale-105 z-20 shadow-xl">
+      {/* Floating Corner Arrow Button: Positioned on the glass card's bottom corner border overlap */}
+      <div className="absolute bottom-2 sm:bottom-4 right-2 sm:right-4 w-12 h-12 rounded-full border border-te-glass-border/80 bg-[#0c1328]/95 dark:bg-[#0c1328]/95 text-te-text transition-all duration-300 group-hover:bg-te-orange group-hover:text-te-bg-alt group-hover:scale-105 z-20 shadow-xl flex items-center justify-center">
         <svg
           className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-0.5"
           viewBox="0 0 24 24"
