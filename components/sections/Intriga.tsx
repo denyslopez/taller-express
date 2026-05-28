@@ -2,7 +2,7 @@ import EmailCapture from "@/components/ui/EmailCapture";
 
 export default function Intriga() {
   return (
-    <section className="relative py-[140px] px-8 bg-[#050811] overflow-hidden flex flex-col items-center justify-center border-t border-white/5">
+    <section className="relative py-[140px] px-8 bg-te-bg-alt overflow-hidden flex flex-col items-center justify-center border-t border-te-glass-border">
       {/* Grain overlay for premium texture */}
       <div
         className="absolute inset-0 opacity-[0.03] pointer-events-none mix-blend-overlay z-0"
@@ -24,7 +24,7 @@ export default function Intriga() {
         </span>
 
         {/* Headline */}
-        <h2 className="te-anime-text font-display font-extrabold text-3xl md:text-5xl lg:text-6xl leading-tight tracking-tight text-white max-w-2xl">
+        <h2 className="te-anime-text font-display font-extrabold text-3xl md:text-5xl lg:text-6xl leading-tight tracking-tight text-te-text max-w-2xl">
           Llevamos meses entendiendo el problema.
         </h2>
 

@@ -1,9 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
+import ThemeToggle from "@/components/ui/ThemeToggle";
 
 export default function Nav() {
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 h-20 bg-te-bg/75 backdrop-blur-lg border-b border-white/6 flex items-center">
+    <header className="fixed top-0 left-0 right-0 z-50 h-20 bg-te-bg/75 backdrop-blur-lg border-b border-te-glass-border flex items-center">
       <div className="w-full max-w-[1280px] mx-auto px-8 flex items-center justify-between">
         {/* Logo / Wordmark */}
         <Link href="/" className="flex items-center gap-2 md:gap-2.5 font-display text-xl md:text-2xl font-extrabold tracking-tight select-none group">
@@ -18,7 +19,7 @@ export default function Nav() {
             />
           </div>
           <div className="flex items-center">
-            <span className="text-white">Taller</span>
+            <span className="text-te-text">Taller</span>
             <span className="text-te-orange">Express</span>
           </div>
         </Link>
@@ -36,14 +37,14 @@ export default function Nav() {
           </Link>
         </nav>
 
-
-        {/* Action Button */}
-        <div>
+        {/* Action Buttons */}
+        <div className="flex items-center gap-3">
+          <ThemeToggle />
           <a
             href="https://instagram.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center bg-gradient-to-r from-te-orange to-te-orange-hover text-te-bg-alt font-body font-bold text-[14px] px-5 py-2.5 rounded-full shadow-md transition-all duration-300 hover:scale-102 hover:shadow-te-orange/20"
+            className="inline-flex items-center justify-center bg-gradient-to-r from-te-orange to-te-orange-hover text-te-bg-alt font-body font-bold text-[14px] px-5 py-2.5 rounded-full shadow-md transition-all duration-300 hover:scale-102 hover:shadow-te-orange/20 shrink-0"
           >
             Síguenos
           </a>

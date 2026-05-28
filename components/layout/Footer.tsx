@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function Footer() {
   return (
-    <footer className="bg-te-bg-alt border-t border-white/6 py-16 mt-auto">
+    <footer className="bg-te-bg-alt border-t border-te-glass-border py-16 mt-auto">
       <div className="max-w-[1280px] mx-auto px-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
         <div className="flex flex-col gap-2">
           {/* Logo / Wordmark */}
@@ -18,7 +18,7 @@ export default function Footer() {
               />
             </div>
             <div className="flex items-center">
-              <span className="text-white">Taller</span>
+              <span className="text-te-text">Taller</span>
               <span className="text-te-orange">Express</span>
             </div>
           </Link>

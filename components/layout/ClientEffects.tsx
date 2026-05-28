@@ -16,26 +16,54 @@ export default function ClientEffects() {
     // SSR safety check
     if (typeof window === "undefined") return;
 
-    // 1. Text split character stagger animation (.te-anime-text)
+    // 1. Text split character stagger animation (.te-anime-text) - Recursive DOM Parser
     const textElements = document.querySelectorAll(".te-anime-text");
     textElements.forEach((element) => {
       // Prevent double splitting if component re-renders
       if (element.querySelector(".te-split-char")) return;
 
-      const text = element.textContent || "";
-      const words = text.trim().split(/\s+/);
-      element.innerHTML = words
-        .map((word) => {
-          const chars = word
-            .split("")
-            .map(
-              (char) =>
-                `<span class="te-split-char" style="display:inline-block">${char}</span>`
-            )
-            .join("");
-          return `<span class="te-word" style="display:inline-block;white-space:nowrap">${chars}</span>`;
-        })
-        .join('<span style="display:inline-block">&nbsp;</span>');
+      // Recursive DOM parser to split text nodes while preserving parent tags and classes
+      function splitNode(node: Node) {
+        if (node.nodeType === Node.TEXT_NODE) {
+          const text = node.textContent || "";
+          if (!text.trim()) return;
+
+          const words = text.split(/(\s+)/);
+          const fragment = document.createDocumentFragment();
+
+          words.forEach((word) => {
+            if (word.trim() === "") {
+              const spaceSpan = document.createElement("span");
+              spaceSpan.style.display = "inline-block";
+              spaceSpan.innerHTML = "&nbsp;";
+              fragment.appendChild(spaceSpan);
+            } else {
+              const wordSpan = document.createElement("span");
+              wordSpan.className = "te-word";
+              wordSpan.style.display = "inline-block";
+              wordSpan.style.whiteSpace = "nowrap";
+
+              word.split("").forEach((char) => {
+                const charSpan = document.createElement("span");
+                charSpan.className = "te-split-char";
+                charSpan.style.display = "inline-block";
+                charSpan.textContent = char;
+                wordSpan.appendChild(charSpan);
+              });
+
+              fragment.appendChild(wordSpan);
+            }
+          });
+
+          node.parentNode?.replaceChild(fragment, node);
+        } else if (node.nodeType === Node.ELEMENT_NODE) {
+          // Mutate child nodes recursively
+          const children = Array.from(node.childNodes);
+          children.forEach((child) => splitNode(child));
+        }
+      }
+
+      splitNode(element);
 
       const chars = element.querySelectorAll(".te-split-char");
       gsap.set(chars, { opacity: 0, x: 30 });

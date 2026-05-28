@@ -8,7 +8,7 @@ html {
   --background: #080f1f;
   --foreground: #f8fafc;
 
-  /* Figma Design Tokens */
+  /* Figma Design Tokens - Default Dark Theme */
   --te-bg-primary: #080f1f;
   --te-bg-alt: #050811;
   --te-text-primary: #f8fafc;
@@ -28,6 +28,30 @@ html {
   --te-badge-border: rgba(255, 255, 255, 0.08);
 }
 
+/* Figma Design Tokens - Premium Light Theme Override */
+html.light {
+  --background: #f8fafc;
+  --foreground: #0b1329;
+
+  --te-bg-primary: #f8fafc;
+  --te-bg-alt: #ffffff;
+  --te-text-primary: #0b1329;
+  --te-text-muted: #475569;
+  --te-text-subtle: #64748b;
+
+  --te-orange: #ff8c1a;
+  --te-orange-hover: #e0720b; /* Slightly darker orange for high contrast on light backgrounds */
+
+  --te-glass-bg: rgba(15, 23, 42, 0.02);
+  --te-glass-border: rgba(15, 23, 42, 0.06);
+
+  --te-input-bg: #ffffff;
+  --te-input-border: rgba(15, 23, 42, 0.1);
+
+  --te-badge-bg: rgba(255, 140, 26, 0.08);
+  --te-badge-border: rgba(255, 140, 26, 0.15);
+}
+
 @theme {
   --color-te-bg: var(--te-bg-primary);
   --color-te-bg-alt: var(--te-bg-alt);
@@ -37,6 +61,9 @@ html {
 
   --color-te-orange: var(--te-orange);
   --color-te-orange-hover: var(--te-orange-hover);
+
+  --color-te-glass-bg: var(--te-glass-bg);
+  --color-te-glass-border: var(--te-glass-border);
 
   --font-display: var(--font-manrope), sans-serif;
   --font-body: var(--font-inter), sans-serif;
