@@ -31,12 +31,9 @@ export default function ArticleCard({ article }: ArticleCardProps) {
     : "";
 
   return (
-    <Link
-      href={`/blog/${article.slug}`}
-      className="group te-anime-top relative block w-full rounded-[32px] cursor-pointer pb-28 sm:pb-32"
-    >
-      {/* Outer Card / Background Image Container */}
-      <div className="relative w-full aspect-[1.2/1] rounded-[32px] overflow-hidden border border-te-glass-border/30 shadow-xl bg-te-bg-alt">
+    <div className="group te-anime-top relative block w-full rounded-[24px] select-none">
+      {/* 1. Main visual container: Image with rounded corners and hidden overflow */}
+      <div className="relative w-full aspect-[4/3] rounded-[24px] overflow-hidden border border-white/[0.08] shadow-lg">
         <Image
           src={article.ogImage || "/images/blog/default.jpg"}
           alt={article.title}
@@ -45,34 +42,39 @@ export default function ArticleCard({ article }: ArticleCardProps) {
           className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
           priority
         />
-        {/* Overlay gradient to darken bottom for readability */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-black/5 transition-opacity duration-500 group-hover:from-black/75" />
+        {/* Shadow Overlay Gradient */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
 
-        {/* Floating Category Badge (Top Left) */}
-        <div className="absolute top-6 left-6 z-10">
-          <span className="inline-block px-3.5 py-1.5 text-[11px] font-extrabold uppercase tracking-widest rounded-full bg-black/60 backdrop-blur-md border border-white/10 text-te-orange shadow-sm">
+        {/* Brand Category Badge (Top Left of image) */}
+        <div className="absolute top-5 left-5 z-10">
+          <span className="inline-block px-3 py-1.5 text-[11px] font-bold uppercase tracking-widest rounded-full bg-black/60 backdrop-blur-md border border-white/10 text-te-orange shadow-sm">
             {categoryNames[article.category] || article.category}
           </span>
         </div>
       </div>
 
-      {/* Floating Glassmorphism Panel: Positioned absolutely, overflowing the bottom edge by -70px / -100px */}
-      <div className="absolute bottom-6 sm:bottom-8 left-4 right-4 sm:left-6 sm:right-6 z-10 bg-te-bg-alt/45 dark:bg-te-bg-alt/45 backdrop-blur-xl border border-te-glass-border/40 rounded-[24px] p-5 md:p-6 flex flex-col gap-3 shadow-2xl transition-all duration-500 group-hover:bg-te-bg-alt/55">
+      {/* 2. Glassmorphic Overlapping Content Panel: 
+          - Overflowing the bottom boundary natively using negative relative translation/margins
+          - Highly translucent white glass with light border and distinct blur factor
+      */}
+      <div className="relative z-10 mx-4 sm:mx-6 -mt-20 bg-white/[0.02] dark:bg-black/25 backdrop-blur-2xl border border-white/[0.08] dark:border-white/[0.1] rounded-[24px] p-5 sm:p-6 flex flex-col gap-3 shadow-xl transition-all duration-300 group-hover:bg-white/[0.06] dark:group-hover:bg-black/35 group-hover:border-white/[0.16]">
         
         {/* Title */}
-        <h3 className="font-display font-semibold text-lg md:text-[20px] leading-snug text-te-text tracking-tight line-clamp-2 transition-colors duration-300 group-hover:text-te-orange">
-          {article.title}
-        </h3>
+        <Link href={`/blog/${article.slug}`} className="focus:outline-none">
+          <h3 className="font-display font-semibold text-lg md:text-[20px] leading-snug text-white tracking-tight line-clamp-2 transition-colors duration-300 group-hover:text-te-orange">
+            {article.title}
+          </h3>
+        </Link>
 
         {/* Excerpt */}
-        <p className="font-body text-[13px] text-te-muted/95 leading-relaxed line-clamp-2">
+        <p className="font-body text-[13px] text-zinc-400 leading-relaxed line-clamp-2">
           {article.excerpt}
         </p>
 
         {/* Footer Metadata & Author Info */}
-        <div className="flex flex-wrap items-center gap-2 sm:gap-3 border-t border-te-glass-border/20 pt-4 mt-1">
+        <div className="flex flex-wrap items-center gap-2 sm:gap-3 border-t border-white/[0.08] pt-4 mt-1">
           {/* Author Avatar */}
-          <div className="relative w-7 h-7 rounded-full overflow-hidden border border-te-glass-border/30 shrink-0">
+          <div className="relative w-7 h-7 rounded-full overflow-hidden border border-white/[0.1] shrink-0">
             <Image
               src={article.authorImage || "/images/author-1.png"}
               alt={article.author || "Taller Express"}
@@ -82,47 +84,56 @@ export default function ArticleCard({ article }: ArticleCardProps) {
             />
           </div>
           {/* Author Name */}
-          <span className="font-body text-[12px] font-bold text-te-text shrink-0">
+          <span className="font-body text-[12px] font-bold text-white shrink-0">
             {article.author || "Taller Express"}
           </span>
           {/* Divider Bullet */}
-          <span className="text-te-muted/40 text-[10px] shrink-0">●</span>
+          <span className="text-zinc-600 text-[10px] shrink-0">●</span>
           {/* Date */}
-          <span className="font-body text-[11px] text-te-muted shrink-0">
+          <span className="font-body text-[11px] text-zinc-400 shrink-0">
             {formattedDate}
           </span>
           {/* Divider Bullet */}
-          <span className="text-te-muted/40 text-[10px] hidden xs:inline shrink-0">●</span>
+          <span className="text-zinc-600 text-[10px] hidden xs:inline shrink-0">●</span>
           {/* Read Time */}
-          <span className="font-body text-[11px] text-te-muted hidden xs:inline shrink-0">
+          <span className="font-body text-[11px] text-zinc-400 hidden xs:inline shrink-0">
             {article.readTime}
           </span>
         </div>
-      </div>
 
-      {/* Floating Corner Arrow Button: Positioned on the glass card's bottom corner border overlap */}
-      <div className="absolute bottom-2 sm:bottom-4 right-2 sm:right-4 w-12 h-12 rounded-full border border-te-glass-border/80 bg-[#0c1328]/95 dark:bg-[#0c1328]/95 text-te-text transition-all duration-300 group-hover:bg-te-orange group-hover:text-te-bg-alt group-hover:scale-105 z-20 shadow-xl flex items-center justify-center">
-        <svg
-          className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-0.5"
-          viewBox="0 0 24 24"
-          fill="none"
-        >
-          <path
-            d="M13.75 6.75L19.25 12L13.75 17.25"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M19 12H4.75"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
+        {/* Bottom Corner Arrow Cutout & Overlapping Button: 
+            - Border corner syncs seamlessly with the background using exact curvature
+        */}
+        <div className="absolute -bottom-[2px] -right-[2px] w-[58px] h-[58px] bg-[#080f1f] dark:bg-[#080f1f] rounded-tl-[24px] border-t border-l border-white/[0.12] transition-colors duration-300 group-hover:border-white/[0.18] flex items-center justify-center">
+          {/* Circular Navigation Arrow */}
+          <Link
+            href={`/blog/${article.slug}`}
+            className="w-[44px] h-[44px] rounded-full border border-white/[0.12] bg-[#0c1328]/90 dark:bg-[#0c1328]/90 text-white flex items-center justify-center transition-all duration-300 group-hover:bg-te-orange group-hover:text-te-bg-alt group-hover:scale-105 shadow-md"
+            aria-label="Leer artículo completo"
+          >
+            <svg
+              className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5"
+              viewBox="0 0 24 24"
+              fill="none"
+            >
+              <path
+                d="M13.75 6.75L19.25 12L13.75 17.25"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M19 12H4.75"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </Link>
+        </div>
       </div>
-    </Link>
+    </div>
   );
 }
