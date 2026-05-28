@@ -57,7 +57,7 @@ export default function ArticleCard({ article }: ArticleCardProps) {
           - Overflowing the bottom boundary natively using negative relative translation/margins
           - Highly translucent white glass with light border and distinct blur factor
       */}
-      <div className="relative z-10 mx-4 sm:mx-6 -mt-20 bg-white/[0.02] dark:bg-black/25 backdrop-blur-2xl border border-white/[0.08] dark:border-white/[0.1] rounded-[24px] p-5 sm:p-6 flex flex-col gap-3 shadow-xl transition-all duration-300 group-hover:bg-white/[0.06] dark:group-hover:bg-black/35 group-hover:border-white/[0.16]">
+      <div className="relative z-10 mx-4 sm:mx-6 -mt-20 bg-white/[0.03] dark:bg-white/[0.07] backdrop-blur-2xl border border-white/[0.08] dark:border-white/[0.12] rounded-[24px] p-5 sm:p-6 pr-16 sm:pr-20 flex flex-col gap-3 shadow-xl transition-all duration-300 group-hover:bg-white/[0.06] dark:group-hover:bg-white/[0.1] group-hover:border-white/[0.16]">
         
         {/* Title */}
         <Link href={`/blog/${article.slug}`} className="focus:outline-none">
@@ -101,38 +101,33 @@ export default function ArticleCard({ article }: ArticleCardProps) {
           </span>
         </div>
 
-        {/* Bottom Corner Arrow Cutout & Overlapping Button: 
-            - Border corner syncs seamlessly with the background using exact curvature
-        */}
-        <div className="absolute -bottom-[2px] -right-[2px] w-[58px] h-[58px] bg-[#080f1f] dark:bg-[#080f1f] rounded-tl-[24px] border-t border-l border-white/[0.12] transition-colors duration-300 group-hover:border-white/[0.18] flex items-center justify-center">
-          {/* Circular Navigation Arrow */}
-          <Link
-            href={`/blog/${article.slug}`}
-            className="w-[44px] h-[44px] rounded-full border border-white/[0.12] bg-[#0c1328]/90 dark:bg-[#0c1328]/90 text-white flex items-center justify-center transition-all duration-300 group-hover:bg-te-orange group-hover:text-te-bg-alt group-hover:scale-105 shadow-md"
-            aria-label="Leer artículo completo"
+        {/* Floating Navigation Arrow Button */}
+        <Link
+          href={`/blog/${article.slug}`}
+          className="absolute bottom-5 right-5 w-[44px] h-[44px] rounded-full border border-white/[0.12] bg-[#0c1328]/90 dark:bg-[#0c1328]/90 text-white flex items-center justify-center transition-all duration-300 group-hover:bg-te-orange group-hover:text-te-bg-alt group-hover:scale-105 shadow-md z-20"
+          aria-label="Leer artículo completo"
+        >
+          <svg
+            className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5"
+            viewBox="0 0 24 24"
+            fill="none"
           >
-            <svg
-              className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5"
-              viewBox="0 0 24 24"
-              fill="none"
-            >
-              <path
-                d="M13.75 6.75L19.25 12L13.75 17.25"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <path
-                d="M19 12H4.75"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </Link>
-        </div>
+            <path
+              d="M13.75 6.75L19.25 12L13.75 17.25"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M19 12H4.75"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </Link>
       </div>
     </div>
   );
