@@ -245,6 +245,58 @@ body {
   margin-bottom: 0.5em;
 }
 
+/* Styled Table support for HTML tables in markdown */
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 14px;
+  border: 1px solid var(--te-glass-border);
+  background-color: var(--te-glass-bg);
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.prose thead {
+  background-color: var(--te-glass-bg);
+  border-bottom: 1px solid var(--te-glass-border);
+}
+
+.prose th {
+  padding: 1rem;
+  font-family: var(--font-geist), sans-serif;
+  font-weight: 700;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--te-orange);
+  text-align: left;
+}
+
+.prose tr {
+  border-bottom: 1px solid var(--te-glass-border);
+}
+
+.prose tr:last-child {
+  border-bottom: none;
+}
+
+.prose tr:hover {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+html.light .prose tr:hover {
+  background-color: rgba(15, 23, 42, 0.02);
+}
+
+.prose td {
+  padding: 1rem;
+  color: var(--te-text-muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
 /* prefers-reduced-motion - Accessibility */
 @media (prefers-reduced-motion: reduce) {
   .te-split-char,
