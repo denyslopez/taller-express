@@ -45,6 +45,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       locale: "es_SV",
       publishedTime: article.date,
       url: `https://tallerexpress.one/blog/${article.slug}`,
+      images: [
+        {
+          url: `/images/blog/${article.slug}/ilustraciones/og-${article.slug}.jpg`,
+          width: 1200,
+          height: 630,
+          alt: article.title,
+        }
+      ]
     },
   };
 }
