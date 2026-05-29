@@ -61,7 +61,7 @@ export default function ArticleCard({ article }: ArticleCardProps) {
         
         {/* Title */}
         <Link href={`/blog/${article.slug}`} className="focus:outline-none">
-          <h3 className="font-display font-semibold text-lg md:text-[20px] leading-snug text-white tracking-tight line-clamp-2 transition-colors duration-300 group-hover:text-te-orange">
+          <h3 className="font-display font-normal text-lg md:text-[20px] leading-snug text-white tracking-tight line-clamp-2 transition-colors duration-300 group-hover:text-te-orange">
             {article.title}
           </h3>
         </Link>

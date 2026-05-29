@@ -12,7 +12,7 @@ export default function PrivacidadPage() {
         
         {/* Header */}
         <div className="flex flex-col gap-3">
-          <h1 className="font-display font-extrabold text-[32px] md:text-[40px] leading-tight text-white tracking-tight">
+          <h1 className="font-display font-semibold text-[32px] md:text-[40px] leading-tight text-white tracking-tight">
             Política de Privacidad
           </h1>
           <p className="font-body text-te-subtle text-[12.8px]">
@@ -28,7 +28,7 @@ export default function PrivacidadPage() {
             En <strong>Taller Express</strong>, valoramos y respetamos tu privacidad. Esta Política de Privacidad describe cómo recopilamos, utilizamos y protegemos tu información personal cuando te registras en nuestras listas de espera, descargas nuestras guías o navegas por nuestro sitio web.
           </p>
 
-          <h2 className="font-display font-bold text-xl text-white mt-4">
+          <h2 className="font-display font-normal text-xl text-white mt-4">
             1. Información que recopilamos
           </h2>
           <p>
@@ -39,7 +39,7 @@ export default function PrivacidadPage() {
             <li><strong>Nombre completo:</strong> Recopilado en el formulario de la Guía Ebook para personalizar las comunicaciones.</li>
           </ul>
 
-          <h2 className="font-display font-bold text-xl text-white mt-4">
+          <h2 className="font-display font-normal text-xl text-white mt-4">
             2. Uso de la información
           </h2>
           <p>
@@ -51,14 +51,14 @@ export default function PrivacidadPage() {
             <li>Avisarte del lanzamiento oficial de nuestra plataforma de servicios.</li>
           </ul>
 
-          <h2 className="font-display font-bold text-xl text-white mt-4">
+          <h2 className="font-display font-normal text-xl text-white mt-4">
             3. Protección de tus datos
           </h2>
           <p>
             Tus datos se procesan de forma segura a través de nuestro proveedor de servicios de email marketing (Brevo). Nunca venderemos, alquilaremos ni compartiremos tu información personal con terceros bajo ningún concepto, excepto para cumplir con obligaciones legales.
           </p>
 
-          <h2 className="font-display font-bold text-xl text-white mt-4">
+          <h2 className="font-display font-normal text-xl text-white mt-4">
             4. Control sobre tu información
           </h2>
           <p>

@@ -27,7 +27,7 @@ export default function GuiaPage() {
             Próximamente &middot; Recurso Gratuito
           </span>
           
-          <h1 className="font-display font-extrabold text-[2.25rem] md:text-[3rem] leading-tight text-white tracking-tight">
+          <h1 className="font-display font-semibold text-[2.25rem] md:text-[3rem] leading-tight text-white tracking-tight">
             La guía que todo dueño de vehículo en El Salvador necesita.
           </h1>
 

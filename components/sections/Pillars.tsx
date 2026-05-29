@@ -55,7 +55,7 @@ export default function Pillars() {
 
               {/* Title & Desc */}
               <div className="flex flex-col gap-3">
-                <h3 className="font-display font-semibold text-[1.375rem] tracking-tight text-te-text leading-tight">
+                <h3 className="font-display font-normal text-[1.375rem] tracking-tight text-te-text leading-tight">
                   {p.title}
                 </h3>
                 <p className="font-body text-[0.95rem] text-te-muted leading-relaxed">
