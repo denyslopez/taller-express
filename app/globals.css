@@ -245,25 +245,42 @@ body {
   margin-bottom: 0.5em;
 }
 
-/* Styled Table support for HTML tables in markdown */
-.prose table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 2rem 0;
-  font-family: var(--font-inter), sans-serif;
-  font-size: 14px;
+/* Styled Table support for HTML tables in markdown (Responsive Notion-like with horizontal slide) */
+.table-container {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch; /* Momentum scrolling on iOS */
   border: 1px solid var(--te-glass-border);
   background-color: var(--te-glass-bg);
   border-radius: 18px;
-  overflow: hidden;
+  margin: 2rem 0;
+  width: 100%;
 }
 
-.prose thead {
+/* Hide default horizontal scrollbar styling to make scroll track clean, but keep standard behaviors */
+.table-container::-webkit-scrollbar {
+  height: 6px;
+}
+.table-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+.table-container::-webkit-scrollbar-thumb {
+  background: var(--te-glass-border);
+  border-radius: 9999px;
+}
+
+.table-container table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 14px;
+}
+
+.table-container thead {
   background-color: var(--te-glass-bg);
   border-bottom: 1px solid var(--te-glass-border);
 }
 
-.prose th {
+.table-container th {
   padding: 1rem;
   font-family: var(--font-geist), sans-serif;
   font-weight: 700;
@@ -272,25 +289,26 @@ body {
   letter-spacing: 0.1em;
   color: var(--te-orange);
   text-align: left;
+  white-space: nowrap; /* Prevent column header wrapping to keep table neat */
 }
 
-.prose tr {
+.table-container tr {
   border-bottom: 1px solid var(--te-glass-border);
 }
 
-.prose tr:last-child {
+.table-container tr:last-child {
   border-bottom: none;
 }
 
-.prose tr:hover {
+.table-container tr:hover {
   background-color: rgba(255, 255, 255, 0.02);
 }
 
-html.light .prose tr:hover {
+html.light .table-container tr:hover {
   background-color: rgba(15, 23, 42, 0.02);
 }
 
-.prose td {
+.table-container td {
   padding: 1rem;
   color: var(--te-text-muted);
   font-size: 14px;
