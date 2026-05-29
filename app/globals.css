@@ -33,6 +33,8 @@ html {
   --te-card-title-color: #f8fafc;
   --te-card-title-hover: #ffb14a;
   --te-card-copy-color: #94a3b8;
+
+  --te-shadow-ebook: 0px 40px 40px rgba(0, 0, 0, 0.45);
 }
 
 /* Figma Design Tokens - Premium Light Theme Override */
@@ -64,6 +66,8 @@ html.light {
   --te-card-title-color: #ff8c1a;
   --te-card-title-hover: #0b1329;
   --te-card-copy-color: #334155;
+
+  --te-shadow-ebook: 0px 25px 35px rgba(15, 23, 42, 0.12);
 }
 
 @theme {
@@ -92,7 +96,7 @@ html.light {
   --font-display: var(--font-geist), sans-serif;
   --font-body: var(--font-inter), sans-serif;
 
-  --shadow-te-ebook: 0px 40px 40px rgba(0, 0, 0, 0.45);
+  --shadow-te-ebook: var(--te-shadow-ebook);
 }
 
 /* Custom Base Styles */
