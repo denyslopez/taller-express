@@ -74,13 +74,13 @@ export default function ArticleCard({ article }: ArticleCardProps) {
         {/* Footer Metadata & Author Info */}
         <div className="flex flex-wrap items-center gap-2 sm:gap-3 border-t border-white/[0.08] pt-4 mt-1">
           {/* Author Avatar */}
-          <div className="relative w-7 h-7 rounded-full overflow-hidden border border-white/[0.1] shrink-0">
+          <div className="relative w-7 h-7 rounded-full overflow-hidden border border-white/[0.1] shrink-0 bg-white/5 flex items-center justify-center">
             <Image
-              src={article.authorImage || "/images/author-1.png"}
-              alt={article.author || "Taller Express"}
+              src="/images/taller-express-orange-icon.png"
+              alt="Taller Express"
               fill
               sizes="28px"
-              className="object-cover"
+              className="object-contain p-0.5"
             />
           </div>
           {/* Author Name */}
