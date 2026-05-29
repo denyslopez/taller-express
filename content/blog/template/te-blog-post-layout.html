@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Layout Template — Taller Express Blog Post</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ─── TOKENS ─────────────────────────────────────────── */
+  :root {
+    --navy:        #0F2557;
+    --navy-deep:   #091840;
+    --navy-mid:    #162d6a;
+    --orange:      #F5820D;
+    --orange-dim:  #c96900;
+    --off-white:   #F0EEE8;
+    --text-body:   #D8D4CC;
+    --text-muted:  #8A8680;
+    --text-dim:    #5A5652;
+    --surface:     #111E3F;
+    --surface-2:   #192649;
+    --border:      rgba(245,130,13,0.15);
+    --border-soft: rgba(255,255,255,0.07);
+    --radius-sm:   6px;
+    --radius-md:   12px;
+    --radius-lg:   20px;
+    --font-display: 'Syne', sans-serif;
+    --font-body:    'DM Sans', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--navy);
+    color: var(--text-body);
+    font-family: var(--font-body);
+    font-size: 18px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ─── NAV (reference only) ───────────────────────────── */
+  .nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(15,37,87,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-soft);
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+  }
+  .nav-logo { font-family: var(--font-display); font-weight: 800; font-size: 1.2rem; color: var(--off-white); text-decoration: none; }
+  .nav-logo span { color: var(--orange); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--off-white); }
+  .nav-cta { background: var(--orange); color: white; padding: 0.5rem 1.25rem; border-radius: 999px; font-size: 0.875rem; font-weight: 600; text-decoration: none; }
+
+  /* ─── HERO DEL ARTÍCULO ──────────────────────────────── */
+  .post-hero {
+    background: var(--navy-deep);
+    padding: 4rem 2rem 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .post-hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 60% -10%, rgba(245,130,13,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-inner {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  /* Breadcrumb */
+  .breadcrumb {
+    display: flex; align-items: center; gap: 0.5rem;
+    font-size: 0.8rem; color: var(--text-muted);
+    margin-bottom: 1.5rem;
+  }
+  .breadcrumb a { color: var(--text-muted); text-decoration: none; }
+  .breadcrumb a:hover { color: var(--orange); }
+  .breadcrumb-sep { opacity: 0.4; }
+
+  /* Pilar badge */
+  .pilar-badge {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    background: rgba(245,130,13,0.12);
+    border: 1px solid rgba(245,130,13,0.25);
+    color: var(--orange);
+    font-size: 0.7rem; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 0.3rem 0.75rem; border-radius: 999px;
+    margin-bottom: 1.25rem;
+  }
+  .pilar-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--orange); animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+  /* H1 del post */
+  .post-title {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.15;
+    color: var(--off-white);
+    margin-bottom: 1.25rem;
+    letter-spacing: -0.02em;
+  }
+
+  /* Meta row */
+  .post-meta {
+    display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap;
+    font-size: 0.82rem; color: var(--text-muted);
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border-soft);
+    margin-bottom: 0;
+  }
+  .meta-sep { width: 3px; height: 3px; border-radius: 50%; background: var(--text-dim); }
+  .reading-time { display: flex; align-items: center; gap: 0.35rem; }
+
+  /* ─── HERO IMAGE PLACEHOLDER ─────────────────────────── */
+  /* POSICIÓN: Full-width, debajo del título, antes del body
+     RAZÓN: El hero image establece contexto visual inmediatamente.
+     En artículos técnicos, va DEBAJO del título para que el H1
+     aparezca primero en la jerarquía SEO y el usuario vea de qué
+     trata antes de ver la imagen. */
+  .hero-image-placeholder {
+    width: 100%;
+    aspect-ratio: 16/7;
+    background: var(--surface);
+    border-top: 1px solid var(--border-soft);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 0.75rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-image-placeholder::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, var(--navy-mid) 0%, var(--navy-deep) 100%);
+    opacity: 0.6;
+  }
+  .placeholder-label {
+    position: relative; z-index: 1;
+    display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+  }
+  .placeholder-icon {
+    width: 56px; height: 56px;
+    border: 2px dashed rgba(245,130,13,0.4);
+    border-radius: var(--radius-md);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem;
+  }
+  .placeholder-type {
+    font-family: var(--font-display);
+    font-size: 0.7rem; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--orange);
+  }
+  .placeholder-desc {
+    font-size: 0.78rem; color: var(--text-muted);
+    text-align: center; max-width: 280px; line-height: 1.5;
+  }
+  .placeholder-note {
+    position: absolute; bottom: 1rem; right: 1rem;
+    font-size: 0.65rem; color: var(--text-dim);
+    font-style: italic;
+  }
+
+  /* ─── MAIN LAYOUT: article + sidebar ─────────────────── */
+  .post-layout {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  /* ─── ARTICLE BODY ───────────────────────────────────── */
+  .post-body {}
+
+  /* Answer Box — captura AI Overviews y Featured Snippets */
+  /* POSICIÓN: Primero en el cuerpo del artículo, antes de cualquier H2
+     RAZÓN: Google extrae este bloque para AI Overviews.
+     Visualmente ancla al lector con la respuesta directa. */
+  .answer-box {
+    background: linear-gradient(135deg, rgba(245,130,13,0.08) 0%, rgba(245,130,13,0.04) 100%);
+    border-left: 3px solid var(--orange);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    padding: 1.5rem 1.75rem;
+    margin-bottom: 2.5rem;
+    position: relative;
+  }
+  .answer-box-label {
+    font-size: 0.65rem; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--orange); margin-bottom: 0.6rem;
+    display: flex; align-items: center; gap: 0.4rem;
+  }
+  .answer-box p {
+    font-size: 1rem; line-height: 1.65;
+    color: var(--off-white); font-weight: 400;
+  }
+
+  /* Tipografía del cuerpo */
+  .post-body h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.25rem, 2.5vw, 1.6rem);
+    font-weight: 700; color: var(--off-white);
+    margin: 2.5rem 0 1rem;
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+  }
+  .post-body h3 {
+    font-family: var(--font-display);
+    font-size: 1.1rem; font-weight: 700;
+    color: var(--off-white);
+    margin: 2rem 0 0.75rem;
+  }
+  .post-body p {
+    color: var(--text-body);
+    margin-bottom: 1.25rem;
+    font-size: 1rem; line-height: 1.8;
+  }
+  .post-body strong { color: var(--off-white); font-weight: 600; }
+  .post-body em { color: var(--text-muted); }
+
+  /* Separador de sección */
+  .post-body hr {
+    border: none; border-top: 1px solid var(--border-soft);
+    margin: 2rem 0;
+  }
+
+  /* Listas */
+  .post-body ul, .post-body ol {
+    padding-left: 1.5rem; margin-bottom: 1.25rem;
+  }
+  .post-body li {
+    color: var(--text-body); margin-bottom: 0.5rem;
+    line-height: 1.7;
+  }
+
+  /* ─── INLINE IMAGE PLACEHOLDER ───────────────────────── */
+  /* POSICIÓN: Dentro del cuerpo del artículo, después de introducir
+     un concepto técnico complejo. Va AL LADO del texto en desktop
+     y encima en mobile.
+     RAZÓN: Apoya la comprensión visual sin interrumpir el flujo de lectura.
+     Las mejores prácticas UX de blog indican que imágenes inline
+     deben aparecer DESPUÉS del párrafo que explica el concepto,
+     nunca antes (evita spoilers visuales). */
+  .inline-media {
+    float: right;
+    width: 42%;
+    margin: 0 0 1.5rem 2rem;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+  }
+  .inline-media-placeholder {
+    aspect-ratio: 4/3;
+    background: var(--surface);
+    border: 1px dashed rgba(245,130,13,0.25);
+    border-radius: var(--radius-md);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 0.5rem; padding: 1rem;
+  }
+  .inline-media-placeholder .placeholder-type { font-size: 0.65rem; }
+  .inline-media-placeholder .placeholder-desc { font-size: 0.72rem; }
+  .inline-media-caption {
+    font-size: 0.75rem; color: var(--text-dim);
+    text-align: center; padding: 0.5rem 0.75rem;
+    font-style: italic; line-height: 1.4;
+  }
+
+  /* Clearfix para floats */
+  .clearfix::after { content: ''; display: table; clear: both; }
+
+  /* ─── TABLA DE REFERENCIA ─────────────────────────────── */
+  /* POSICIÓN: Dentro del cuerpo, después de explicar los tipos/variantes.
+     RAZÓN: Las tablas son el elemento de mayor valor de referencia rápida
+     — el lector que regresa busca la tabla directamente. Siempre
+     después de la explicación en prosa, nunca antes. */
+  .data-table-wrapper {
+    overflow-x: auto;
+    margin: 1.5rem 0 2rem;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-soft);
+  }
+  .data-table {
+    width: 100%; border-collapse: collapse;
+    font-size: 0.88rem;
+  }
+  .data-table thead {
+    background: var(--surface-2);
+  }
+  .data-table th {
+    padding: 0.875rem 1.25rem;
+    text-align: left; font-family: var(--font-display);
+    font-size: 0.7rem; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--orange); border-bottom: 1px solid var(--border-soft);
+    white-space: nowrap;
+  }
+  .data-table td {
+    padding: 0.875rem 1.25rem;
+    color: var(--text-body);
+    border-bottom: 1px solid var(--border-soft);
+    line-height: 1.5;
+  }
+  .data-table tbody tr:last-child td { border-bottom: none; }
+  .data-table tbody tr:hover td { background: rgba(255,255,255,0.02); }
+
+  /* ─── CALLOUT / TIP BOX ──────────────────────────────── */
+  /* POSICIÓN: Después de una sección importante, antes del siguiente H2.
+     RAZÓN: Los callouts crean respiro visual y destacan la información
+     más accionable. Máximo 2 por artículo para no diluir el impacto. */
+  .callout {
+    background: var(--surface-2);
+    border-radius: var(--radius-md);
+    padding: 1.25rem 1.5rem;
+    margin: 1.5rem 0 2rem;
+    display: flex; gap: 1rem; align-items: flex-start;
+  }
+  .callout-icon { font-size: 1.25rem; flex-shrink: 0; margin-top: 0.1rem; }
+  .callout-content {}
+  .callout-title {
+    font-family: var(--font-display); font-weight: 700;
+    font-size: 0.85rem; color: var(--off-white);
+    margin-bottom: 0.3rem;
+  }
+  .callout-text { font-size: 0.9rem; color: var(--text-body); line-height: 1.6; }
+  .callout.warning { border-left: 3px solid #F5A623; }
+  .callout.info    { border-left: 3px solid #4A9EF5; }
+  .callout.tip     { border-left: 3px solid #4AF5A0; }
+
+  /* ─── FULL-WIDTH IMAGE/VIDEO PLACEHOLDER ─────────────── */
+  /* POSICIÓN: Entre dos H2s, cuando el concepto es visual/proceso.
+     RAZÓN: Los medios full-width crean un "momento editorial" —
+     pausan al lector y refuerzan autoridad. Ideal para mostrar
+     procesos (cambio de aceite, inspección de frenos).
+     En fase stealth: usar imágenes conceptuales, no del servicio.
+     En fase reveal: aquí va el video del proceso real de Taller Express. */
+  .full-media-placeholder {
+    width: 100%;
+    aspect-ratio: 16/7;
+    background: var(--surface);
+    border: 1px dashed rgba(245,130,13,0.2);
+    border-radius: var(--radius-md);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 0.75rem; padding: 1.5rem;
+    margin: 2rem 0;
+    position: relative; overflow: hidden;
+  }
+  .full-media-placeholder::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(45deg, rgba(15,37,87,0.9) 0%, rgba(9,24,64,0.95) 100%);
+  }
+  .full-media-placeholder .placeholder-label { z-index: 1; }
+  .phase-tag {
+    position: absolute; top: 1rem; left: 1rem; z-index: 1;
+    background: rgba(245,130,13,0.15);
+    border: 1px solid rgba(245,130,13,0.3);
+    color: var(--orange);
+    font-size: 0.6rem; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 0.2rem 0.6rem; border-radius: 999px;
+  }
+
+  /* ─── FAQ SECTION ────────────────────────────────────── */
+  /* POSICIÓN: Siempre al final del artículo, antes del CTA.
+     RAZÓN: Google extrae FAQs para rich snippets y AI Overviews.
+     Visualmente crea un cierre limpio al artículo. */
+  .faq-section {
+    margin-top: 3rem;
+    border-top: 1px solid var(--border-soft);
+    padding-top: 2.5rem;
+  }
+  .faq-title {
+    font-family: var(--font-display); font-weight: 700;
+    font-size: 1.25rem; color: var(--off-white);
+    margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .faq-title-line {
+    flex: 1; height: 1px; background: var(--border-soft);
+  }
+  .faq-item {
+    border-bottom: 1px solid var(--border-soft);
+    overflow: hidden;
+  }
+  .faq-item:last-child { border-bottom: none; }
+  .faq-question {
+    width: 100%; background: none; border: none; cursor: pointer;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.25rem 0; gap: 1rem;
+    text-align: left;
+    font-family: var(--font-body); font-size: 0.95rem; font-weight: 600;
+    color: var(--off-white); transition: color 0.2s;
+  }
+  .faq-question:hover { color: var(--orange); }
+  .faq-chevron {
+    width: 20px; height: 20px; border-radius: 50%;
+    border: 1px solid var(--border-soft);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; font-size: 0.7rem;
+    transition: transform 0.3s, background 0.2s;
+    color: var(--text-muted);
+  }
+  .faq-item.open .faq-chevron { transform: rotate(180deg); background: var(--orange); border-color: var(--orange); color: white; }
+  .faq-answer {
+    max-height: 0; overflow: hidden;
+    transition: max-height 0.35s cubic-bezier(0.16,1,0.3,1);
+  }
+  .faq-answer-inner {
+    padding-bottom: 1.25rem;
+    font-size: 0.9rem; color: var(--text-body); line-height: 1.7;
+  }
+  .faq-item.open .faq-answer { max-height: 400px; }
+
+  /* ─── IN-ARTICLE CTA (Lead Magnet) ───────────────────── */
+  /* POSICIÓN: A mitad del artículo (~60% del scroll) y al final.
+     RAZÓN: Los estudios de heatmap muestran que el CTA al 60%
+     convierte mejor que al inicio (el lector ya recibió valor)
+     y que solo al final (muchos no llegan). Doble CTA es best practice. */
+  .article-cta {
+    background: linear-gradient(135deg, var(--surface-2) 0%, var(--navy-mid) 100%);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    margin: 2.5rem 0;
+    text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .article-cta::before {
+    content: '';
+    position: absolute; top: -40px; right: -40px;
+    width: 150px; height: 150px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(245,130,13,0.12), transparent 70%);
+  }
+  .cta-eyebrow {
+    font-size: 0.65rem; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--orange); margin-bottom: 0.6rem;
+  }
+  .cta-headline {
+    font-family: var(--font-display); font-weight: 800;
+    font-size: 1.2rem; color: var(--off-white);
+    margin-bottom: 0.6rem; line-height: 1.3;
+  }
+  .cta-sub {
+    font-size: 0.88rem; color: var(--text-muted);
+    margin-bottom: 1.25rem; line-height: 1.55;
+  }
+  .cta-btn {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: linear-gradient(180deg, #F5920D 0%, #D97000 100%);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.18), 0 4px 16px rgba(245,130,13,0.3);
+    color: white; font-weight: 700; font-size: 0.9rem;
+    padding: 0.75rem 1.75rem; border-radius: 999px;
+    text-decoration: none; transition: opacity 0.2s, transform 0.2s;
+    border: none; cursor: pointer;
+  }
+  .cta-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+  .cta-privacy { font-size: 0.7rem; color: var(--text-dim); margin-top: 0.75rem; }
+
+  /* ─── SIDEBAR ─────────────────────────────────────────── */
+  .post-sidebar {
+    position: sticky;
+    top: 84px;
+    display: flex; flex-direction: column; gap: 1.5rem;
+  }
+
+  /* Table of Contents */
+  .toc-widget {
+    background: var(--surface);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-md);
+    padding: 1.25rem;
+  }
+  .toc-label {
+    font-family: var(--font-display); font-weight: 700;
+    font-size: 0.7rem; color: var(--text-muted);
+    letter-spacing: 0.1em; text-transform: uppercase;
+    margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;
+  }
+  .toc-label::after { content: ''; flex: 1; height: 1px; background: var(--border-soft); }
+  .toc-list { list-style: none; display: flex; flex-direction: column; gap: 0.3rem; }
+  .toc-list a {
+    display: block; padding: 0.3rem 0.5rem;
+    font-size: 0.82rem; color: var(--text-muted);
+    text-decoration: none; border-radius: var(--radius-sm);
+    transition: color 0.2s, background 0.2s;
+    line-height: 1.4;
+  }
+  .toc-list a:hover, .toc-list a.active {
+    color: var(--orange); background: rgba(245,130,13,0.06);
+  }
+  .toc-list a.active { font-weight: 600; }
+
+  /* Sidebar CTA */
+  .sidebar-cta {
+    background: linear-gradient(135deg, var(--surface-2), var(--navy-mid));
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    text-align: center;
+  }
+  .sidebar-cta-icon { font-size: 2rem; margin-bottom: 0.75rem; }
+  .sidebar-cta-title {
+    font-family: var(--font-display); font-weight: 700;
+    font-size: 0.95rem; color: var(--off-white);
+    margin-bottom: 0.5rem; line-height: 1.3;
+  }
+  .sidebar-cta-text { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1rem; line-height: 1.5; }
+  .sidebar-cta-btn {
+    display: block; width: 100%;
+    background: linear-gradient(180deg, #F5920D 0%, #D97000 100%);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.18);
+    color: white; font-weight: 700; font-size: 0.82rem;
+    padding: 0.65rem 1rem; border-radius: 999px;
+    text-decoration: none; transition: opacity 0.2s;
+    border: none; cursor: pointer;
+  }
+  .sidebar-cta-btn:hover { opacity: 0.88; }
+  .sidebar-privacy { font-size: 0.65rem; color: var(--text-dim); margin-top: 0.6rem; }
+
+  /* Share widget */
+  .share-widget {
+    background: var(--surface);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-md);
+    padding: 1.25rem;
+  }
+  .share-label {
+    font-size: 0.7rem; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--text-muted); margin-bottom: 0.875rem;
+  }
+  .share-buttons { display: flex; flex-direction: column; gap: 0.5rem; }
+  .share-btn {
+    display: flex; align-items: center; gap: 0.6rem;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-sm);
+    padding: 0.5rem 0.75rem;
+    font-size: 0.8rem; color: var(--text-body);
+    text-decoration: none; cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .share-btn:hover { background: rgba(245,130,13,0.08); border-color: rgba(245,130,13,0.2); color: var(--off-white); }
+  .share-btn-icon { width: 16px; text-align: center; }
+
+  /* ─── ARTICLE FOOTER ─────────────────────────────────── */
+  .post-footer {
+    border-top: 1px solid var(--border-soft);
+    padding-top: 2.5rem; margin-top: 3rem;
+  }
+  .post-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem; }
+  .post-tag {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border-soft);
+    color: var(--text-muted); font-size: 0.75rem;
+    padding: 0.25rem 0.75rem; border-radius: 999px;
+    text-decoration: none;
+  }
+  .post-tag:hover { border-color: var(--orange); color: var(--orange); }
+
+  /* Related posts */
+  .related-title {
+    font-family: var(--font-display); font-weight: 700;
+    font-size: 1rem; color: var(--off-white);
+    margin-bottom: 1.25rem;
+  }
+  .related-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .related-card {
+    background: var(--surface);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-md);
+    overflow: hidden; text-decoration: none;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .related-card:hover { border-color: var(--border); transform: translateY(-2px); }
+  .related-card-thumb {
+    aspect-ratio: 16/7;
+    background: var(--surface-2);
+    border-bottom: 1px solid var(--border-soft);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.65rem; color: var(--text-dim);
+    font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  }
+  .related-card-body { padding: 0.875rem; }
+  .related-card-tag {
+    font-size: 0.6rem; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--orange); margin-bottom: 0.3rem;
+  }
+  .related-card-title {
+    font-family: var(--font-display); font-size: 0.88rem;
+    font-weight: 700; color: var(--off-white); line-height: 1.3;
+  }
+
+  /* ─── COMMENTS PLACEHOLDER ───────────────────────────── */
+  /* POSICIÓN: Último elemento del artículo, después de artículos relacionados.
+     RAZÓN: Los comentarios son el nivel más bajo del funnel de contenido.
+     El lector que comenta ya es parte de la comunidad. */
+  .comments-placeholder {
+    background: var(--surface);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-md);
+    padding: 2rem; margin-top: 2rem;
+    text-align: center;
+  }
+  .comments-icon { font-size: 2rem; margin-bottom: 0.75rem; }
+  .comments-title { font-family: var(--font-display); font-weight: 700; font-size: 1rem; color: var(--off-white); margin-bottom: 0.4rem; }
+  .comments-sub { font-size: 0.85rem; color: var(--text-muted); }
+
+  /* ─── ANNOTATIONS (design notes, visible only in this template) ─── */
+  .annotation {
+    position: relative;
+    margin: 0.5rem 0;
+  }
+  .annotation-badge {
+    display: inline-flex; align-items: center; gap: 0.35rem;
+    background: rgba(74,159,245,0.12);
+    border: 1px solid rgba(74,159,245,0.25);
+    color: #4A9EF5;
+    font-size: 0.65rem; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 0.2rem 0.6rem; border-radius: 999px;
+    margin-bottom: 0.25rem;
+  }
+
+  /* ─── RESPONSIVE ─────────────────────────────────────── */
+  @media (max-width: 900px) {
+    .post-layout {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    .post-sidebar {
+      position: static;
+      order: -1;
+    }
+    .toc-widget { display: none; }
+    .inline-media { float: none; width: 100%; margin: 1.5rem 0; }
+    .related-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 600px) {
+    .post-hero { padding: 2.5rem 1.25rem 0; }
+    .post-layout { padding: 2rem 1.25rem; }
+    .post-title { font-size: 1.75rem; }
+    .nav-links { display: none; }
+  }
+
+  /* ─── FADE IN ANIMATION ──────────────────────────────── */
+  .fade-in { animation: fadeIn 0.6s cubic-bezier(0.16,1,0.3,1) both; }
+  .fade-in:nth-child(1){animation-delay:0.05s}
+  .fade-in:nth-child(2){animation-delay:0.1s}
+  .fade-in:nth-child(3){animation-delay:0.15s}
+  .fade-in:nth-child(4){animation-delay:0.2s}
+  @keyframes fadeIn { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a class="nav-logo" href="#"><span>Taller</span>Express</a>
+  <ul class="nav-links">
+    <li><a href="#">Artículos</a></li>
+    <li><a href="#">La Guía</a></li>
+    <li><a href="#">Comunidad</a></li>
+  </ul>
+  <a class="nav-cta" href="#">Síguenos</a>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════════
+     HERO DEL POST
+     ═══════════════════════════════════════════════════════ -->
+<header class="post-hero">
+  <div class="hero-inner">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb fade-in">
+      <a href="#">Inicio</a>
+      <span class="breadcrumb-sep">›</span>
+      <a href="#">Artículos</a>
+      <span class="breadcrumb-sep">›</span>
+      <span>Educación</span>
+    </nav>
+
+    <!-- Pilar badge -->
+    <div class="pilar-badge fade-in">
+      <span class="pilar-dot"></span>
+      Educación
+    </div>
+
+    <!-- H1 -->
+    <h1 class="post-title fade-in">
+      ¿Cada cuánto tiempo debo cambiar<br>el aceite de mi carro?
+    </h1>
+
+    <!-- Meta -->
+    <div class="post-meta fade-in">
+      <span>Taller Express</span>
+      <span class="meta-sep"></span>
+      <span>Mayo 2026</span>
+      <span class="meta-sep"></span>
+      <span class="reading-time">⏱ 6 min de lectura</span>
+      <span class="meta-sep"></span>
+      <span>Validado con fuentes técnicas</span>
+    </div>
+
+  </div><!-- /hero-inner -->
+
+  <!-- ┌─────────────────────────────────────────────────────┐
+       │  PLACEHOLDER 1: HERO IMAGE                          │
+       │  Tipo: IMAGE                                        │
+       │  Posición: Full-width, debajo del título            │
+       │  Relación de aspecto: 16:7                          │
+       │  Descripción: Imagen conceptual de motor /          │
+       │  aceite / mantenimiento. En fase stealth:           │
+       │  imagen de stock premium. En fase reveal:           │
+       │  foto real del proceso Taller Express.              │
+       └─────────────────────────────────────────────────────┘ -->
+  <div class="hero-image-placeholder">
+    <div class="placeholder-label">
+      <div class="placeholder-icon">🖼️</div>
+      <div class="placeholder-type">IMAGE — Hero</div>
+      <div class="placeholder-desc">Imagen conceptual: aceite de motor, motor limpio, o tablero de vehículo. Ratio 16:7. Focal point centrado.</div>
+    </div>
+    <div class="placeholder-note">Adobe Firefly / Pexels Premium</div>
+  </div>
+
+</header>
+
+<!-- ═══════════════════════════════════════════════════════
+     MAIN LAYOUT: ARTICLE + SIDEBAR
+     ═══════════════════════════════════════════════════════ -->
+<div class="post-layout">
+
+  <!-- ─── ARTICLE ──────────────────────────────────────── -->
+  <article class="post-body">
+
+    <!-- ┌─────────────────────────────────────────────────┐
+         │  ANSWER BOX                                      │
+         │  Posición: Primer elemento del body              │
+         │  Propósito: SEO — captura AI Overviews           │
+         │  y Featured Snippets de Google                   │
+         └─────────────────────────────────────────────────┘ -->
+    <div class="answer-box">
+      <div class="answer-box-label">⚡ Respuesta rápida</div>
+      <p>La respuesta depende del tipo de aceite: convencional cada 5,000 km o 6 meses, semisintético cada 7,500–10,000 km o cada año, y sintético cada 10,000–15,000 km o cada 12–18 meses. En El Salvador, el tráfico pesado y el calor pueden acortar estos intervalos hasta un 20%.</p>
+    </div>
+
+    <!-- Intro copy -->
+    <p>Hay preguntas que nadie te enseña a responder cuando te compras tu primer carro. Esta es una de las más importantes — y la más ignorada.</p>
+    <p>La respuesta corta: <strong>depende del tipo de aceite que usa tu motor</strong>. Pero como "depende" no le sirve a nadie en la fila del taller, aquí va la versión completa.</p>
+
+    <!-- ─── H2 Section con inline image ─────────────── -->
+    <h2>Por qué el aceite importa más de lo que crees</h2>
+
+    <!-- ┌─────────────────────────────────────────────────┐
+         │  PLACEHOLDER 2: INLINE IMAGE (float right)      │
+         │  Tipo: IMAGE                                     │
+         │  Posición: Flotada a la derecha del texto        │
+         │  Aparece: Después del H2, al lado del primer     │
+         │  párrafo explicativo                             │
+         │  Ratio: 4:3                                      │
+         │  Descripción: Diagrama visual o infografía       │
+         │  que muestra las partes del motor lubricadas     │
+         │  por el aceite. O imagen de aceite sucio vs      │
+         │  aceite limpio en una varilla.                   │
+         └─────────────────────────────────────────────────┘ -->
+    <div class="clearfix">
+      <div class="inline-media">
+        <div class="inline-media-placeholder">
+          <div class="placeholder-icon" style="width:40px;height:40px;font-size:1.1rem">🖼️</div>
+          <div class="placeholder-type">IMAGE — Inline</div>
+          <div class="placeholder-desc">Aceite limpio vs aceite sucio. O diagrama de motor con áreas lubricadas destacadas.</div>
+        </div>
+        <div class="inline-media-caption">El aceite degradado pierde su capacidad de proteger el motor.</div>
+      </div>
+
+      <p>El aceite de motor hace algo que ninguna otra pieza del carro puede hacer: mantiene vivos los componentes internos del motor mientras trabaja. Sin aceite limpio y en buen estado, las piezas metálicas del motor rozan entre sí, generan calor y se desgastan.</p>
+      <p>Un motor dañado por falta de mantenimiento puede costar entre <strong>$1,500 y $5,000</strong> en reparación. Un cambio de aceite preventivo cuesta entre <strong>$20 y $65</strong> en El Salvador.</p>
+    </div>
+
+    <!-- CALLOUT TIP -->
+    <div class="callout tip">
+      <div class="callout-icon">💡</div>
+      <div class="callout-content">
+        <div class="callout-title">Regla práctica para El Salvador</div>
+        <div class="callout-text">Si manejas más de 40 minutos diarios en tráfico pesado, reduce el intervalo recomendado en un 20%. El stop-and-go constante acelera el desgaste del aceite.</div>
+      </div>
+    </div>
+
+    <!-- ─── H2 Section con tabla ─────────────────────── -->
+    <h2>Los tres tipos de aceite — y cuánto dura cada uno</h2>
+
+    <p>No todos los aceites son iguales. El intervalo correcto depende directamente del tipo que usa tu carro.</p>
+
+    <!-- ┌─────────────────────────────────────────────────┐
+         │  TABLA DE REFERENCIA                            │
+         │  Posición: Después de explicar los 3 tipos      │
+         │  Propósito: Referencia rápida escaneables       │
+         │  SEO: Las tablas bien estructuradas son         │
+         │  candidatas a featured snippets en Google       │
+         └─────────────────────────────────────────────────┘ -->
+    <div class="data-table-wrapper">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Tipo de aceite</th>
+            <th>Cada cuánto km</th>
+            <th>Cada cuánto tiempo</th>
+            <th>Vehículos comunes en SV</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Convencional</strong></td>
+            <td>5,000 km</td>
+            <td>6 meses</td>
+            <td>Toyota Corolla 00s, Nissan Sentra viejo</td>
+          </tr>
+          <tr>
+            <td><strong>Semisintético</strong></td>
+            <td>7,500–10,000 km</td>
+            <td>12 meses</td>
+            <td>Kia Rio, Hyundai Accent, Honda Civic</td>
+          </tr>
+          <tr>
+            <td><strong>Sintético</strong></td>
+            <td>10,000–15,000 km</td>
+            <td>12–18 meses</td>
+            <td>RAV4, Rogue, Sportage, carros 2018+</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ─── CTA MID-ARTICLE (~60% del scroll) ─────────── -->
+    <!-- ┌─────────────────────────────────────────────────┐
+         │  IN-ARTICLE CTA — Lead Magnet                   │
+         │  Posición: ~60% del artículo                    │
+         │  Posición óptima según estudios de heatmap      │
+         │  Propósito: Capturar email antes del final      │
+         └─────────────────────────────────────────────────┘ -->
+    <div class="article-cta">
+      <div class="cta-eyebrow">📋 Guía gratuita</div>
+      <div class="cta-headline">Lo que deberías saber antes de ir al taller</div>
+      <div class="cta-sub">La guía completa del dueño inteligente. Sin tecnicismos. Sin sorpresas.</div>
+      <a class="cta-btn" href="#">Descargar gratis →</a>
+      <div class="cta-privacy">Sin spam. Solo contenido que te sirve.</div>
+    </div>
+
+    <!-- ─── H2 Section con Full-width media ──────────── -->
+    <h2>4 señales de que el aceite ya está vencido</h2>
+
+    <!-- ┌─────────────────────────────────────────────────┐
+         │  PLACEHOLDER 3: FULL-WIDTH IMAGE/VIDEO          │
+         │  Tipo: IMAGE (fase stealth) / VIDEO (fase reveal)│
+         │  Posición: Entre H2s, para secciones con        │
+         │  contenido visual/proceso                       │
+         │  Ratio: 16:7                                    │
+         │  Fase stealth: Imagen conceptual del tablero    │
+         │  con la luz de aceite encendida                 │
+         │  Fase reveal: Video corto del proceso de        │
+         │  revisión de aceite en Taller Express           │
+         └─────────────────────────────────────────────────┘ -->
+    <div class="full-media-placeholder">
+      <div class="phase-tag">🎬 Fase Reveal → VIDEO</div>
+      <div class="placeholder-label">
+        <div class="placeholder-icon">🖼️</div>
+        <div class="placeholder-type">IMAGE (stealth) / VIDEO (reveal)</div>
+        <div class="placeholder-desc">Stealth: imagen tablero con luz de aceite. Reveal: video 30s del proceso de revisión.</div>
+      </div>
+    </div>
+
+    <p><strong>1. El aceite está negro o muy oscuro</strong> — El aceite limpio tiene un tono ámbar o dorado. Si al revisar la varilla está negro y espeso, ya está saturado de residuos.</p>
+    <p><strong>2. El motor hace ruidos al arrancar</strong> — Un sonido metálico o "golpeteo" al encender el motor puede indicar que el aceite ya no está lubricando bien.</p>
+    <p><strong>3. Huele a quemado desde el cofre</strong> — El aceite degradado se quema antes de lubricar — ese olor es una señal de alerta.</p>
+    <p><strong>4. El indicador del tablero se enciende</strong> — La luz de aceite no es una sugerencia. Si se enciende mientras manejas, detente en un lugar seguro lo antes posible.</p>
+
+    <div class="callout warning">
+      <div class="callout-icon">⚠️</div>
+      <div class="callout-content">
+        <div class="callout-title">El error más común</div>
+        <div class="callout-text">Cambiar el aceite "cuando se acuerdan". Para cuando el motor da señales visibles, el daño ya está avanzando. El mantenimiento preventivo funciona porque actúas antes de que el problema aparezca.</div>
+      </div>
+    </div>
+
+    <h2>Lo que un buen taller te explicará solo</h2>
+    <p>Cuando un taller trabaja bien, la información fluye de forma natural. Un mecánico de confianza normalmente te dirá qué tipo de aceite usó, cuándo debes regresar y te entregará su recibo con el detalle del servicio.</p>
+    <p>Si tienes dudas, pregunta con curiosidad genuina: <em>"¿Qué aceite me pusieron?"</em> o <em>"¿Cuándo me recomiendan volver?"</em> Los mecánicos que saben su trabajo disfrutan explicarlo.</p>
+
+    <hr>
+
+    <!-- ─── FAQ SECTION ───────────────────────────────── -->
+    <div class="faq-section">
+      <div class="faq-title">
+        Preguntas frecuentes
+        <div class="faq-title-line"></div>
+      </div>
+
+      <div class="faq-item open">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          ¿Puedo cambiar el aceite yo mismo en El Salvador?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Sí, técnicamente es posible. Pero implica tener el aceite correcto, el filtro adecuado y un lugar donde desechar el aceite usado de forma segura. Para la mayoría de propietarios, llevarlo al taller es más práctico y garantiza que el trabajo quede documentado.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          ¿Qué pasa si me paso del kilometraje recomendado?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Un cambio tardío ocasional no destruye el motor, pero hacerlo de forma habitual sí acumula daño. Si te pasaste, cámbialo lo antes posible y retoma el ritmo.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          ¿El aceite más caro siempre es mejor?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">No necesariamente. Lo importante es usar el tipo correcto para tu motor según lo que indica el fabricante. Usar aceite sintético en un motor viejo que no lo requiere no le da ningún beneficio adicional.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          ¿El calor de El Salvador afecta la elección de aceite?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Sí. El calor tropical acelera la degradación del aceite, especialmente el convencional. Si tu carro usa aceite convencional y manejas en tráfico pesado con calor diario, considera hablar con tu mecánico de confianza sobre si un semisintético sería más adecuado.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          ¿Cómo sé si el taller me puso el aceite correcto?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Puedes preguntar directamente qué aceite usaron — marca y viscosidad. Un taller transparente responde sin problema. También puedes comparar con lo que indica el manual de tu vehículo.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─── POST FOOTER ──────────────────────────────── -->
+    <div class="post-footer">
+
+      <!-- Tags -->
+      <div class="post-tags">
+        <a class="post-tag" href="#">aceite de motor</a>
+        <a class="post-tag" href="#">mantenimiento preventivo</a>
+        <a class="post-tag" href="#">El Salvador</a>
+        <a class="post-tag" href="#">aceite sintético</a>
+        <a class="post-tag" href="#">taller</a>
+      </div>
+
+      <!-- Related posts -->
+      <div class="related-title">También te puede interesar</div>
+      <div class="related-grid">
+        <a class="related-card" href="#">
+          <div class="related-card-thumb">[ IMAGE ]</div>
+          <div class="related-card-body">
+            <div class="related-card-tag">Confianza</div>
+            <div class="related-card-title">5 señales de que tus frenos necesitan revisión</div>
+          </div>
+        </a>
+        <a class="related-card" href="#">
+          <div class="related-card-thumb">[ IMAGE ]</div>
+          <div class="related-card-body">
+            <div class="related-card-tag">Educación</div>
+            <div class="related-card-title">¿Cuánto dura una llanta en El Salvador?</div>
+          </div>
+        </a>
+      </div>
+
+    </div><!-- /post-footer -->
+
+    <!-- ─── END CTA ───────────────────────────────────── -->
+    <div class="article-cta" style="margin-top:2.5rem">
+      <div class="cta-eyebrow">📋 Guía gratuita</div>
+      <div class="cta-headline">Guía del dueño inteligente</div>
+      <div class="cta-sub">Lo que deberías saber antes de ir al taller. Gratis para los suscriptores de Taller Express.</div>
+      <a class="cta-btn" href="#">Descargar ahora →</a>
+      <div class="cta-privacy">Sin spam. Solo contenido que te sirve.</div>
+    </div>
+
+    <!-- Comments -->
+    <div class="comments-placeholder">
+      <div class="comments-icon">💬</div>
+      <div class="comments-title">¿Tienes una pregunta o comentario?</div>
+      <div class="comments-sub">Déjanos tu modelo en los comentarios y te orientamos.</div>
+    </div>
+
+  </article><!-- /post-body -->
+
+  <!-- ─── SIDEBAR ──────────────────────────────────────── -->
+  <aside class="post-sidebar">
+
+    <!-- Table of Contents -->
+    <div class="toc-widget">
+      <div class="toc-label">En este artículo</div>
+      <ul class="toc-list">
+        <li><a href="#" class="active">Por qué el aceite importa</a></li>
+        <li><a href="#">Los tres tipos de aceite</a></li>
+        <li><a href="#">Tabla de referencia rápida</a></li>
+        <li><a href="#">El tráfico salvadoreño sí afecta</a></li>
+        <li><a href="#">4 señales de aceite vencido</a></li>
+        <li><a href="#">Lo que te explicará el taller</a></li>
+        <li><a href="#">Preguntas frecuentes</a></li>
+      </ul>
+    </div>
+
+    <!-- Sidebar CTA -->
+    <div class="sidebar-cta">
+      <div class="sidebar-cta-icon">📋</div>
+      <div class="sidebar-cta-title">Guía del dueño inteligente</div>
+      <div class="sidebar-cta-text">Lo que deberías saber antes de ir al taller. Gratis.</div>
+      <a class="sidebar-cta-btn" href="#">Descargar gratis</a>
+      <div class="sidebar-privacy">Sin spam. Puedes darte de baja cuando quieras.</div>
+    </div>
+
+    <!-- Share -->
+    <div class="share-widget">
+      <div class="share-label">Compartir artículo</div>
+      <div class="share-buttons">
+        <a class="share-btn" href="#">
+          <span class="share-btn-icon">📱</span> WhatsApp
+        </a>
+        <a class="share-btn" href="#">
+          <span class="share-btn-icon">📘</span> Facebook
+        </a>
+        <a class="share-btn" href="#">
+          <span class="share-btn-icon">🔗</span> Copiar enlace
+        </a>
+      </div>
+    </div>
+
+  </aside>
+
+</div><!-- /post-layout -->
+
+<script>
+  // FAQ toggle
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+
+  // TOC active state on scroll
+  const headings = document.querySelectorAll('.post-body h2');
+  const tocLinks = document.querySelectorAll('.toc-list a');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const idx = Array.from(headings).indexOf(entry.target);
+        tocLinks.forEach(l => l.classList.remove('active'));
+        if (tocLinks[idx]) tocLinks[idx].classList.add('active');
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+  headings.forEach(h => observer.observe(h));
+</script>
+
+</body>
+</html>
