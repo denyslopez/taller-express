@@ -85,7 +85,7 @@ export default function ArticleCard({ article }: ArticleCardProps) {
           </div>
           {/* Author Name */}
           <span className="font-body text-[12px] font-bold text-white shrink-0">
-            {article.author || "Taller Express"}
+            Taller Express
           </span>
           {/* Divider Bullet */}
           <span className="text-zinc-600 text-[10px] shrink-0">●</span>
