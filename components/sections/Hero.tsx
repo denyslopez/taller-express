@@ -40,7 +40,7 @@ export default function Hero() {
       <div className="relative z-10 max-w-[1280px] mx-auto w-full px-8 flex flex-col items-start text-left gap-5 md:gap-6">
         
         {/* Eyebrow with orange dot */}
-        <div className="te-anime-top inline-flex items-center gap-2 bg-te-badge-bg border border-te-badge-border px-4 py-2 rounded-full shadow-sm">
+        <div className="te-anime-top inline-flex items-center gap-2 bg-white/[0.04] border border-white/[0.08] px-4 py-2 rounded-full shadow-sm">
           <span className="w-2.5 h-2.5 rounded-full bg-te-orange shrink-0" />
           <span className="font-body text-[12px] font-bold uppercase tracking-wider text-te-muted">
             Por Salvadoreños &middot; Para Salvadoreños
