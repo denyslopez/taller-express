@@ -61,13 +61,13 @@ export default function ArticleCard({ article }: ArticleCardProps) {
         
         {/* Title */}
         <Link href={`/blog/${article.slug}`} className="focus:outline-none">
-          <h3 className="font-display font-normal text-lg md:text-[20px] leading-snug text-te-text tracking-tight line-clamp-2 transition-colors duration-300 group-hover:text-te-orange">
+          <h3 className="font-display font-normal text-lg md:text-[20px] leading-snug text-te-card-title tracking-tight line-clamp-2 transition-colors duration-300 group-hover:text-te-card-title-hover">
             {article.title}
           </h3>
         </Link>
 
         {/* Excerpt */}
-        <p className="font-body text-[13px] text-zinc-400 leading-relaxed line-clamp-2">
+        <p className="font-body text-[13px] text-te-card-copy leading-relaxed line-clamp-2">
           {article.excerpt}
         </p>
 
@@ -88,15 +88,15 @@ export default function ArticleCard({ article }: ArticleCardProps) {
             Taller Express
           </span>
           {/* Divider Bullet */}
-          <span className="text-zinc-600 text-[10px] shrink-0">●</span>
+          <span className="text-te-muted text-[10px] shrink-0">●</span>
           {/* Date */}
-          <span className="font-body text-[11px] text-zinc-400 shrink-0">
+          <span className="font-body text-[11px] text-te-muted shrink-0">
             {formattedDate}
           </span>
           {/* Divider Bullet */}
-          <span className="text-zinc-600 text-[10px] hidden xs:inline shrink-0">●</span>
+          <span className="text-te-muted text-[10px] hidden xs:inline shrink-0">●</span>
           {/* Read Time */}
-          <span className="font-body text-[11px] text-zinc-400 hidden xs:inline shrink-0">
+          <span className="font-body text-[11px] text-te-muted hidden xs:inline shrink-0">
             {article.readTime}
           </span>
         </div>

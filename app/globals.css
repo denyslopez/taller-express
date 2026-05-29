@@ -29,6 +29,10 @@ html {
 
   --te-card-bg-start: #16243b;
   --te-card-bg-end: #0f1728;
+
+  --te-card-title-color: #f8fafc;
+  --te-card-title-hover: #ffb14a;
+  --te-card-copy-color: #94a3b8;
 }
 
 /* Figma Design Tokens - Premium Light Theme Override */
@@ -56,6 +60,10 @@ html.light {
 
   --te-card-bg-start: #f1f5f9;
   --te-card-bg-end: #e2e8f0;
+
+  --te-card-title-color: #ff8c1a;
+  --te-card-title-hover: #0b1329;
+  --te-card-copy-color: #334155;
 }
 
 @theme {
@@ -76,6 +84,10 @@ html.light {
 
   --color-te-card-start: var(--te-card-bg-start);
   --color-te-card-end: var(--te-card-bg-end);
+
+  --color-te-card-title: var(--te-card-title-color);
+  --color-te-card-title-hover: var(--te-card-title-hover);
+  --color-te-card-copy: var(--te-card-copy-color);
 
   --font-display: var(--font-geist), sans-serif;
   --font-body: var(--font-inter), sans-serif;
