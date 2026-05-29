@@ -43,32 +43,34 @@ export default function SectionTitle({
       {/* Optional .view-more Button */}
       {viewMoreHref && (
         <div className="shrink-0 pl-4">
-          <Link href={viewMoreHref} className="view-more h-8 md:h-10 group/btn">
-            <span className="circle">
-              {/* Icon Container */}
-              <span className="relative w-3.5 h-3.5 md:w-4 md:h-4 text-[#111111] flex items-center justify-center">
-                {/* Chevron Icon - Visible by default, hidden on hover */}
-                <svg
-                  className="w-3 h-3 md:w-3.5 md:h-3.5 absolute transition-opacity duration-300 opacity-100 group-hover/btn:opacity-0"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="3"
-                  viewBox="0 0 24 24"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-                </svg>
-                {/* Arrow Icon - Hidden by default, visible on hover */}
-                <svg
-                  className="w-3 h-3 md:w-3.5 md:h-3.5 absolute transition-opacity duration-300 opacity-0 group-hover/btn:opacity-100"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="3"
-                  viewBox="0 0 24 24"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                </svg>
-              </span>
+          <Link href={viewMoreHref} className="view-more h-8 md:h-10 group/btn relative">
+            {/* Circle background - expands on hover */}
+            <span className="circle" />
+            
+            {/* Static Icon Container - Placed exactly where the circle is, but doesn't move on hover */}
+            <span className="absolute left-0 top-1/2 -translate-y-1/2 w-8 h-8 md:w-10 md:h-10 flex items-center justify-center z-20 text-[#111111] pointer-events-none">
+              {/* Chevron Icon - Visible by default, hidden on hover */}
+              <svg
+                className="w-3 h-3 md:w-3.5 md:h-3.5 absolute transition-opacity duration-300 opacity-100 group-hover/btn:opacity-0"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="3"
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+              </svg>
+              {/* Arrow Icon - Hidden by default, visible on hover */}
+              <svg
+                className="w-3 h-3 md:w-3.5 md:h-3.5 absolute transition-opacity duration-300 opacity-0 group-hover/btn:opacity-100"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="3"
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+              </svg>
             </span>
+
             <span className="button-text">
               {viewMoreLabel}
             </span>
