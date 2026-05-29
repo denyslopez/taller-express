@@ -47,7 +47,7 @@ export default function Nav() {
         <div className="flex items-center gap-3">
           <ThemeToggle />
           <a
-            href="https://instagram.com"
+            href="https://www.facebook.com/somostallerexpress"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center bg-gradient-to-r from-te-orange to-te-orange-hover text-te-bg-alt font-body font-bold text-[14px] px-5 py-2.5 rounded-full shadow-md transition-all duration-300 hover:scale-102 hover:shadow-te-orange/20 shrink-0"
@@ -165,7 +165,7 @@ export default function Nav() {
         </nav>
         
         <a
-          href="https://instagram.com"
+          href="https://www.facebook.com/somostallerexpress"
           target="_blank"
           rel="noopener noreferrer"
           className="w-full inline-flex items-center justify-center bg-gradient-to-r from-te-orange to-te-orange-hover text-te-bg-alt font-body font-bold text-[15px] py-3 rounded-full shadow-lg transition-all duration-300 hover:scale-102 hover:shadow-te-orange/30 mt-2"

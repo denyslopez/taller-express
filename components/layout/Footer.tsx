@@ -62,7 +62,7 @@ export default function Footer() {
 
               {/* Facebook */}
               <a
-                href="https://facebook.com"
+                href="https://www.facebook.com/somostallerexpress"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Facebook"
