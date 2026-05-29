@@ -32,7 +32,7 @@ export default function Pillars() {
   ];
 
   return (
-    <section className="bg-te-bg-alt py-[120px] px-8 border-y border-white/5">
+    <section className="bg-te-bg-alt py-[120px] px-8 border-y border-te-glass-border">
       <div className="max-w-[1280px] mx-auto w-full">
         
         {/* Title without view more */}
@@ -46,10 +46,10 @@ export default function Pillars() {
           {pillars.map((p, idx) => (
             <div
               key={idx}
-              className="te-anime-top bg-white/[0.02] border border-white/[0.05] rounded-[28px] p-[35px] hover:border-white/[0.1] hover:bg-white/[0.03] transition-all duration-300 flex flex-col gap-6"
+              className="te-anime-top bg-te-glass-bg border border-te-glass-border rounded-[28px] p-[35px] hover:border-te-orange/30 hover:bg-te-glass-bg/20 transition-all duration-300 flex flex-col gap-6"
             >
               {/* Icon Container */}
-              <div className="w-16 h-16 rounded-[18px] bg-white/[0.03] border border-white/[0.06] flex items-center justify-center">
+              <div className="w-16 h-16 rounded-[18px] bg-te-glass-bg border border-te-glass-border flex items-center justify-center">
                 {p.icon}
               </div>
 

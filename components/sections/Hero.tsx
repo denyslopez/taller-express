@@ -30,17 +30,17 @@ export default function Hero() {
           priority
           className="object-cover object-bottom opacity-[0.7] scale-100 transition-all duration-500"
         />
-        {/* Dark overlay at the top sky area for bulletproof legibility */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#080f1f]/85 via-[#080f1f]/35 to-transparent" />
-        {/* Bottom blending gradient to match page transition */}
-        <div className="absolute inset-0 bg-gradient-to-t from-te-bg via-transparent to-transparent" />
+        {/* Responsive theme-aware gradient from the top to guarantee absolute text legibility */}
+        <div className="absolute inset-x-0 top-0 h-[65%] bg-gradient-to-b from-te-bg via-te-bg/80 via-te-bg/50 to-transparent" />
+        {/* Soft bottom blend to transition smoothly to the next section without muddying the image */}
+        <div className="absolute bottom-0 left-0 right-0 h-[25%] bg-gradient-to-t from-te-bg to-transparent" />
       </div>
 
       {/* Hero Content Container - Aligned to the Left, and placed at the Top on Mobile */}
       <div className="relative z-10 max-w-[1280px] mx-auto w-full px-8 flex flex-col items-start text-left gap-5 md:gap-6">
         
         {/* Eyebrow with orange dot */}
-        <div className="te-anime-top inline-flex items-center gap-2 bg-white/[0.04] border border-white/[0.08] px-4 py-2 rounded-full shadow-sm">
+        <div className="te-anime-top inline-flex items-center gap-2 bg-te-badge-bg border border-te-badge-border px-4 py-2 rounded-full shadow-sm">
           <span className="w-2.5 h-2.5 rounded-full bg-te-orange shrink-0" />
           <span className="font-body text-[12px] font-bold uppercase tracking-wider text-te-muted">
             Por Salvadoreños &middot; Para Salvadoreños

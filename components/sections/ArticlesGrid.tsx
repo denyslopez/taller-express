@@ -31,7 +31,7 @@ export default function ArticlesGrid({ articles }: ArticlesGridProps) {
           ))}
         </div>
       ) : (
-        <div className="w-full py-16 flex flex-col items-center justify-center border border-dashed border-white/10 rounded-[28px] bg-white/[0.01]">
+        <div className="w-full py-16 flex flex-col items-center justify-center border border-dashed border-te-glass-border rounded-[28px] bg-te-glass-bg">
           <p className="font-body text-te-muted text-[14.4px]">
             No hay artículos disponibles por el momento.
           </p>

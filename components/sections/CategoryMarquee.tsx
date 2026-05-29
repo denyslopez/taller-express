@@ -15,13 +15,13 @@ export default function CategoryMarquee() {
   ];
 
   return (
-    <section className="te-anime-top bg-te-bg-alt py-10 border-y border-white/5 overflow-hidden">
+    <section className="te-anime-top bg-te-bg-alt py-10 border-y border-te-glass-border overflow-hidden">
       <Marquee speed={50} pauseOnHover={true} gradient={false}>
         <div className="flex items-center gap-12 pl-12">
           {categories.map((cat, idx) => (
             <div key={idx} className="flex items-center gap-4">
               {/* Category Pill */}
-              <div className="font-body text-[14px] font-semibold text-te-muted border border-white/10 px-[19px] py-[10px] rounded-full bg-white/[0.02] select-none hover:border-te-orange hover:text-white hover:bg-white/[0.04] transition-all duration-300">
+              <div className="font-body text-[14px] font-semibold text-te-muted border border-te-glass-border px-[19px] py-[10px] rounded-full bg-te-glass-bg select-none hover:border-te-orange hover:text-te-text hover:bg-te-glass-bg/25 transition-all duration-300">
                 {cat}
               </div>
 
@@ -33,7 +33,7 @@ export default function CategoryMarquee() {
           {categories.map((cat, idx) => (
             <div key={`dup-${idx}`} className="flex items-center gap-4">
               {/* Category Pill */}
-              <div className="font-body text-[14px] font-semibold text-te-muted border border-white/10 px-[19px] py-[10px] rounded-full bg-white/[0.02] select-none hover:border-te-orange hover:text-white hover:bg-white/[0.04] transition-all duration-300">
+              <div className="font-body text-[14px] font-semibold text-te-muted border border-te-glass-border px-[19px] py-[10px] rounded-full bg-te-glass-bg select-none hover:border-te-orange hover:text-te-text hover:bg-te-glass-bg/25 transition-all duration-300">
                 {cat}
               </div>
 

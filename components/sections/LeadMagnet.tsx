@@ -6,7 +6,7 @@ export default function LeadMagnet() {
     <section className="py-[120px] px-8 bg-te-bg overflow-hidden">
       <div className="max-w-[1280px] mx-auto w-full">
         {/* Floating gradient container card */}
-        <div className="relative w-full bg-gradient-to-br from-[#16243b] to-[#0f1728] border border-white/[0.08] rounded-[40px] p-8 md:p-[70px] overflow-hidden flex flex-col md:flex-row items-center justify-between gap-12">
+        <div className="relative w-full bg-gradient-to-br from-te-card-start to-te-card-end border border-te-glass-border rounded-[40px] p-8 md:p-[70px] overflow-hidden flex flex-col md:flex-row items-center justify-between gap-12">
           
           {/* Abstract vector line design background element (Top-Right) */}
           <div className="absolute top-0 right-0 w-[300px] h-[300px] pointer-events-none select-none opacity-[0.06] text-white">

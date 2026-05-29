@@ -38,7 +38,7 @@ export default function BlogListClient({ initialArticles }: BlogListClientProps)
           ))}
         </div>
       ) : (
-        <div className="w-full py-24 flex flex-col items-center justify-center border border-dashed border-white/10 rounded-[28px] bg-white/[0.01]">
+        <div className="w-full py-24 flex flex-col items-center justify-center border border-dashed border-te-glass-border rounded-[28px] bg-te-glass-bg">
           <p className="font-body text-te-muted text-[14.4px]">
             No se encontraron artículos en esta categoría.
           </p>

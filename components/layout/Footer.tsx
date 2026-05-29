@@ -36,7 +36,7 @@ export default function Footer() {
               href="https://wa.me/50370000000"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-body text-[14.4px] font-semibold text-white hover:text-te-orange transition-colors duration-200"
+              className="font-body text-[14.4px] font-semibold text-te-text hover:text-te-orange transition-colors duration-200"
             >
               WhatsApp Agent
             </a>
@@ -52,7 +52,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
-                className="text-te-muted hover:text-white transition-colors duration-200"
+                className="text-te-muted hover:text-te-text transition-colors duration-200"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                   <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
@@ -66,7 +66,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Facebook"
-                className="text-te-muted hover:text-white transition-colors duration-200"
+                className="text-te-muted hover:text-te-text transition-colors duration-200"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                   <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
@@ -78,11 +78,11 @@ export default function Footer() {
       </div>
 
       {/* Copyright */}
-      <div className="max-w-[1280px] mx-auto px-8 mt-12 pt-8 border-t border-white/6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+      <div className="max-w-[1280px] mx-auto px-8 mt-12 pt-8 border-t border-te-glass-border flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <p className="font-body text-[12.8px] text-te-subtle">
           &copy; {new Date().getFullYear()} Taller Express. Todos los derechos reservados.
         </p>
-        <Link href="/privacidad" className="font-body text-[12.8px] text-te-subtle hover:text-white transition-colors duration-200">
+        <Link href="/privacidad" className="font-body text-[12.8px] text-te-subtle hover:text-te-text transition-colors duration-200">
           Política de Privacidad
         </Link>
       </div>

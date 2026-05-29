@@ -29,7 +29,7 @@ export default function Intriga() {
         </h2>
 
         {/* Subhead */}
-        <p className="font-body text-base md:text-[1.08rem] text-zinc-400 max-w-xl font-light leading-relaxed">
+        <p className="font-body text-base md:text-[1.08rem] text-te-muted max-w-xl font-light leading-relaxed">
           La solución está en camino. Cuando esté lista, tú eres el primero en saberlo.
         </p>
 

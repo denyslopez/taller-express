@@ -32,13 +32,13 @@ export default function Nav() {
 
         {/* Navigation Links - Desktop Only */}
         <nav className="flex items-center gap-10">
-          <Link href="/blog" className="font-body text-[0.95rem] font-medium text-te-muted hover:text-white transition-colors duration-200">
+          <Link href="/blog" className="font-body text-[0.95rem] font-medium text-te-muted hover:text-te-text transition-colors duration-200">
             Artículos
           </Link>
-          <Link href="/guia" className="font-body text-[0.95rem] font-medium text-te-muted hover:text-white transition-colors duration-200">
+          <Link href="/guia" className="font-body text-[0.95rem] font-medium text-te-muted hover:text-te-text transition-colors duration-200">
             La Guía
           </Link>
-          <Link href="/blog?cat=comunidad" className="font-body text-[0.95rem] font-medium text-te-muted hover:text-white transition-colors duration-200">
+          <Link href="/blog?cat=comunidad" className="font-body text-[0.95rem] font-medium text-te-muted hover:text-te-text transition-colors duration-200">
             Comunidad
           </Link>
         </nav>
@@ -141,7 +141,7 @@ export default function Nav() {
           <Link 
             href="/blog" 
             onClick={() => setIsOpen(false)}
-            className="font-body text-[1.1rem] font-semibold text-te-muted hover:text-white transition-colors duration-200 py-3.5 border-b border-te-glass-border/30 flex items-center justify-between group"
+            className="font-body text-[1.1rem] font-semibold text-te-muted hover:text-te-text transition-colors duration-200 py-3.5 border-b border-te-glass-border/30 flex items-center justify-between group"
           >
             <span>Artículos</span>
             <span className="text-te-orange opacity-0 -translate-x-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">➔</span>
@@ -149,7 +149,7 @@ export default function Nav() {
           <Link 
             href="/guia" 
             onClick={() => setIsOpen(false)}
-            className="font-body text-[1.1rem] font-semibold text-te-muted hover:text-white transition-colors duration-200 py-3.5 border-b border-te-glass-border/30 flex items-center justify-between group"
+            className="font-body text-[1.1rem] font-semibold text-te-muted hover:text-te-text transition-colors duration-200 py-3.5 border-b border-te-glass-border/30 flex items-center justify-between group"
           >
             <span>La Guía</span>
             <span className="text-te-orange opacity-0 -translate-x-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">➔</span>
@@ -157,7 +157,7 @@ export default function Nav() {
           <Link 
             href="/blog?cat=comunidad" 
             onClick={() => setIsOpen(false)}
-            className="font-body text-[1.1rem] font-semibold text-te-muted hover:text-white transition-colors duration-200 py-3.5 border-b border-te-glass-border/30 flex items-center justify-between group"
+            className="font-body text-[1.1rem] font-semibold text-te-muted hover:text-te-text transition-colors duration-200 py-3.5 border-b border-te-glass-border/30 flex items-center justify-between group"
           >
             <span>Comunidad</span>
             <span className="text-te-orange opacity-0 -translate-x-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">➔</span>

@@ -72,7 +72,7 @@ export default function EmailCapture({
   if (status === "success") {
     return (
       <div className="p-6 rounded-[18px] bg-te-orange/10 border border-te-orange/30 max-w-md w-full">
-        <h3 className="font-display text-lg font-semibold text-white mb-1">
+        <h3 className="font-display text-lg font-semibold text-te-text mb-1">
           ¡Listo! Te has registrado
         </h3>
         <p className="font-body text-[14px] text-te-muted">

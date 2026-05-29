@@ -74,19 +74,19 @@ export default async function ArticlePage({ params }: Props) {
         </span>
 
         {/* Article H1 Title */}
-        <h1 className="te-anime-text font-display font-semibold text-[2rem] sm:text-[2.75rem] md:text-[3.25rem] leading-[1.1] tracking-tight text-white mb-6">
+        <h1 className="te-anime-text font-display font-semibold text-[2rem] sm:text-[2.75rem] md:text-[3.25rem] leading-[1.1] tracking-tight text-te-text mb-6">
           {article.title}
         </h1>
 
         {/* Date & Metadata */}
         <div className="flex items-center gap-3 text-[13.5px] text-te-muted mb-8 te-anime-top">
           <span>{formattedDate}</span>
-          <span className="w-1.5 h-1.5 rounded-full bg-white/10" />
+          <span className="w-1.5 h-1.5 rounded-full bg-te-glass-border" />
           <span>Lectura de {article.readTime}</span>
         </div>
 
         {/* Divider */}
-        <hr className="w-full border-t border-white/5 mb-10" />
+        <hr className="w-full border-t border-te-glass-border mb-10" />
 
         {/* Main Prose Reading Section */}
         <div className="prose w-full text-zinc-300 te-anime-top">
@@ -94,12 +94,12 @@ export default async function ArticlePage({ params }: Props) {
         </div>
 
         {/* Divider */}
-        <hr className="w-full border-t border-white/5 my-12" />
+        <hr className="w-full border-t border-te-glass-border my-12" />
 
         {/* Post-article Email Capture */}
-        <div className="w-full bg-white/[0.02] border border-white/[0.05] rounded-[28px] p-8 flex flex-col items-center justify-center text-center gap-6 te-anime-top">
+        <div className="w-full bg-te-glass-bg border border-te-glass-border rounded-[28px] p-8 flex flex-col items-center justify-center text-center gap-6 te-anime-top">
           <div className="flex flex-col gap-2">
-            <h3 className="font-display font-bold text-xl text-white">
+            <h3 className="font-display font-bold text-xl text-te-text">
               ¿Te fue útil? Hay más contenido como este.
             </h3>
             <p className="font-body text-[0.95rem] text-te-muted max-w-md">
