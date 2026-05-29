@@ -31,6 +31,9 @@ export const metadata: Metadata = {
     locale: "es_SV",
     siteName: "Taller Express",
   },
+  verification: {
+    google: "I8Mr-QDvys8A1tpsNJoI2rrWHZ3diGWJfdpBeAK_TRU",
+  },
 };
 
 export default function RootLayout({
