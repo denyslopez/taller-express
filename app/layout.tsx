@@ -4,6 +4,7 @@ import "./globals.css";
 import Nav from "@/components/layout/Nav";
 import Footer from "@/components/layout/Footer";
 import ClientEffects from "@/components/layout/ClientEffects";
+import Analytics from "@/components/ui/Analytics";
 
 const sora = Sora({
   variable: "--font-sora",
@@ -59,6 +60,7 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col bg-te-bg text-te-text font-body">
+        <Analytics />
         <ClientEffects />
         <Nav />
         <main className="flex-grow pt-20 flex flex-col">{children}</main>
