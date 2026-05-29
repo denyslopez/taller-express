@@ -398,6 +398,8 @@ export default async function ArticlePage({ params }: Props) {
                 placeholder="Tu correo electrónico"
                 cta="Descargar gratis"
                 variant="light"
+                forceCol={true}
+                compact={true}
               />
             </div>
             <span className="font-body text-[10.5px] text-te-subtle">

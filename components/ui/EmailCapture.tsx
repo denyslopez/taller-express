@@ -9,6 +9,8 @@ interface EmailCaptureProps {
   cta?: string;
   variant?: "light" | "dark"; // light = home hero, blog posts, cards; dark = S5-Intriga
   showName?: boolean; // true in S4-LeadMagnet and /guia
+  forceCol?: boolean; // forces a vertical flex column layout even on md/lg screens
+  compact?: boolean; // reduces padding and uses rounded-[18px] instead of rounded-full
 }
 
 export default function EmailCapture({
@@ -17,6 +19,8 @@ export default function EmailCapture({
   cta = "Avisame →",
   variant = "light",
   showName = false,
+  forceCol = false,
+  compact = false,
 }: EmailCaptureProps) {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
@@ -83,8 +87,8 @@ export default function EmailCapture({
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-3 w-full max-w-md">
-      <div className={clsx("flex flex-col gap-2.5", showName ? "sm:flex-col" : "sm:flex-row")}>
+    <form onSubmit={handleSubmit} className="flex flex-col gap-3 w-full max-w-md mx-auto">
+      <div className={clsx("flex flex-col gap-2.5", (showName || forceCol) ? "flex-col" : "sm:flex-col lg:flex-row")}>
         {showName && (
           <input
             type="text"
@@ -94,15 +98,17 @@ export default function EmailCapture({
             placeholder="Tu nombre completo"
             required
             className={clsx(
-              "font-body text-[14.4px] px-6 py-4 rounded-[18px] w-full border outline-none transition-all duration-300",
+              "font-body text-[14.4px] w-full border outline-none transition-all duration-300",
+              compact ? "px-5 py-3" : "px-6 py-4",
               variant === "dark"
                 ? "bg-white/10 border-white/10 text-white placeholder-zinc-500 focus:border-te-orange/50 focus:bg-white/15"
-                : "bg-te-input-bg border-te-input-border text-te-text placeholder-te-muted focus:border-te-orange/50 focus:bg-te-input-bg/80"
+                : "bg-te-input-bg border-te-input-border text-te-text placeholder-te-muted focus:border-te-orange/50 focus:bg-te-input-bg/80",
+              (compact || showName) ? "rounded-[18px]" : "rounded-full"
             )}
           />
         )}
 
-        <div className="flex flex-col sm:flex-row gap-2.5 w-full">
+        <div className={clsx("flex flex-col gap-2.5 w-full", forceCol ? "flex-col" : "sm:flex-col lg:flex-row")}>
           <input
             type="email"
             value={email}
@@ -111,11 +117,13 @@ export default function EmailCapture({
             placeholder={placeholder}
             required
             className={clsx(
-              "font-body text-[14.4px] px-6 py-4 rounded-full flex-grow border outline-none transition-all duration-300",
+              "font-body text-[14.4px] border outline-none transition-all duration-300",
+              forceCol ? "w-full" : "w-full lg:w-auto lg:flex-grow",
+              compact ? "px-5 py-3" : "px-6 py-4",
               variant === "dark"
                 ? "bg-white/10 border-white/10 text-white placeholder-zinc-500 focus:border-te-orange/50 focus:bg-white/15"
                 : "bg-te-input-bg border-te-input-border text-te-text placeholder-te-muted focus:border-te-orange/50 focus:bg-te-input-bg/80",
-              showName && "rounded-[18px]" // matching border radius scales per design.md
+              (compact || showName) ? "rounded-[18px]" : "rounded-full"
             )}
           />
 
@@ -123,11 +131,13 @@ export default function EmailCapture({
             type="submit"
             disabled={status === "loading"}
             className={clsx(
-              "font-body font-bold text-[14.4px] text-[#111111] px-8 py-4 rounded-full transition-all duration-300 select-none",
+              "font-body font-bold text-[14.4px] text-[#111111] transition-all duration-300 select-none shrink-0",
+              forceCol ? "w-full" : "w-full lg:w-auto",
+              compact ? "px-5 py-3" : "px-8 py-4",
               status === "loading"
                 ? "bg-te-orange/50 cursor-not-allowed"
                 : "bg-gradient-to-r from-te-orange to-te-orange-hover hover:scale-102 hover:shadow-te-orange/20 shadow-md",
-              showName && "rounded-[18px]" // matching border radius scales per design.md
+              (compact || showName) ? "rounded-[18px]" : "rounded-full"
             )}
           >
             {status === "loading" ? "Enviando..." : cta}
