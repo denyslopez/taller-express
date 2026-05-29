@@ -46,10 +46,10 @@ export default function SectionTitle({
           <Link href={viewMoreHref} className="view-more h-8 md:h-10 group/btn">
             <span className="circle">
               {/* Icon Container */}
-              <span className="relative w-3.5 h-3.5 md:w-4 md:h-4 text-[#111111] transition-all duration-300 flex items-center justify-center">
+              <span className="relative w-3.5 h-3.5 md:w-4 md:h-4 text-[#111111] flex items-center justify-center">
                 {/* Chevron Icon - Visible by default, hidden on hover */}
                 <svg
-                  className="w-3 h-3 md:w-3.5 md:h-3.5 absolute transition-all duration-300 opacity-100 scale-100 group-hover/btn:opacity-0 group-hover/btn:scale-50"
+                  className="w-3 h-3 md:w-3.5 md:h-3.5 absolute transition-opacity duration-300 opacity-100 group-hover/btn:opacity-0"
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="3"
@@ -59,7 +59,7 @@ export default function SectionTitle({
                 </svg>
                 {/* Arrow Icon - Hidden by default, visible on hover */}
                 <svg
-                  className="w-3 h-3 md:w-3.5 md:h-3.5 absolute transition-all duration-300 opacity-0 scale-50 group-hover/btn:opacity-100 group-hover/btn:scale-100 group-hover/btn:translate-x-0.5"
+                  className="w-3 h-3 md:w-3.5 md:h-3.5 absolute transition-opacity duration-300 opacity-0 group-hover/btn:opacity-100"
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="3"
