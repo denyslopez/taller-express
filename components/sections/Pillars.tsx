@@ -6,8 +6,17 @@ export default function Pillars() {
       title: "Entiende tu vehículo",
       desc: "Mantenimiento preventivo, señales de alerta y qué revisar antes de que sea urgente.",
       icon: (
-        <svg className="w-8 h-8 text-te-orange shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25" />
+        <svg className="w-8 h-8 text-te-orange shrink-0" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+          <path d="M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16Z"/>
+          <path d="M12 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/>
+          <path d="M12 2v2"/>
+          <path d="M12 20v2"/>
+          <path d="m4.93 4.93 1.41 1.41"/>
+          <path d="m17.66 17.66 1.41 1.41"/>
+          <path d="M2 12h2"/>
+          <path d="M20 12h2"/>
+          <path d="m6.34 17.66-1.41 1.41"/>
+          <path d="m19.07 4.93-1.41 1.41"/>
         </svg>
       ),
     },
@@ -15,8 +24,9 @@ export default function Pillars() {
       title: "Habla con confianza",
       desc: "Cómo comunicarte mejor, qué preguntar y cómo leer lo que te dicen.",
       icon: (
-        <svg className="w-8 h-8 text-te-orange shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M8.678 20.89a9 9 0 005.505.215 9.74 9.74 0 003.577-2.187 9.704 9.704 0 002.528-3.762 9.07 9.07 0 00.384-2.733c-.001-1.016-.215-2.021-.631-2.958a9.716 9.716 0 00-1.743-2.685 9.716 9.716 0 00-2.684-1.743 9.071 9.071 0 00-2.958-.631 9.071 9.071 0 00-2.733.384 9.704 9.704 0 00-3.762 2.528 9.74 9.74 0 00-2.187 3.577 9 9 0 00.215 5.505A12.24 12.24 0 003 20c2.225-.244 4.49-.908 6.505-2.025a1.21 1.21 0 011.026.046c.925.433 1.942.662 2.969.662v-.002z" />
+        <svg className="w-8 h-8 text-te-orange shrink-0" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/>
+          <path d="m9 12 2 2 4-4"/>
         </svg>
       ),
     },
@@ -24,8 +34,9 @@ export default function Pillars() {
       title: "Conoce los precios",
       desc: "Rangos reales del mercado salvadoreño. Por qué varían y qué es razonable esperar.",
       icon: (
-        <svg className="w-8 h-8 text-te-orange shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5h.007m-.007 3h.007m-.007 3h.007m-.007 3h.007m-.007 3h.007m0 3h.007M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        <svg className="w-8 h-8 text-te-orange shrink-0" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+          <path d="M12 2H2v10l9.29 9.29c.94.94 2.48.94 3.42 0l6.58-6.58c.94-.94.94-2.48 0-3.42L12 2Z"/>
+          <path d="M7 7h.01"/>
         </svg>
       ),
     },
