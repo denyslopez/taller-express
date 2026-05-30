@@ -8,6 +8,27 @@ export const metadata: Metadata = {
   title: "Artículos y Consejos",
   description:
     "Aprende sobre mantenimiento, precios y cuidado de tu vehículo con guías prácticas sin tecnicismos en El Salvador.",
+  openGraph: {
+    type: "website",
+    locale: "es_SV",
+    siteName: "Taller Express",
+    title: "Artículos y Consejos | Taller Express",
+    description: "Aprende sobre mantenimiento, precios y cuidado de tu vehículo con guías prácticas sin tecnicismos en El Salvador.",
+    images: [
+      {
+        url: "/images/blog/precios-og.png",
+        width: 1200,
+        height: 630,
+        alt: "Artículos y Consejos — Taller Express El Salvador",
+      }
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Artículos y Consejos | Taller Express",
+    description: "Aprende sobre mantenimiento, precios y cuidado de tu vehículo con guías prácticas sin tecnicismos en El Salvador.",
+    images: ["/images/blog/precios-og.png"],
+  },
 };
 
 export default async function BlogPage() {

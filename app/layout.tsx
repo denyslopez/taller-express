@@ -29,6 +29,22 @@ export const metadata: Metadata = {
     type: "website",
     locale: "es_SV",
     siteName: "Taller Express",
+    title: "Taller Express — Tu Agente Automotriz en El Salvador",
+    description: "Contenido práctico sobre mantenimiento, precios y cuidado de tu vehículo. Hecho para dueños de carro en El Salvador.",
+    images: [
+      {
+        url: "/images/taller-express-hero-bg-001.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Taller Express — Tu Agente Automotriz en El Salvador",
+      }
+    ]
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Taller Express — Tu Agente Automotriz en El Salvador",
+    description: "Contenido práctico sobre mantenimiento, precios y cuidado de tu vehículo. Hecho para dueños de carro en El Salvador.",
+    images: ["/images/taller-express-hero-bg-001.jpg"],
   },
   verification: {
     google: "I8Mr-QDvys8A1tpsNJoI2rrWHZ3diGWJfdpBeAK_TRU",
