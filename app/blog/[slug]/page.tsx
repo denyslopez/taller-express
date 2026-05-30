@@ -41,6 +41,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const ogTitle = article.ogTitle || article.title;
   const ogDescription = article.ogDescription || article.excerpt;
 
+  const ogExtension = article.slug === "senales-frenos-necesitan-revision" ? "png" : "jpg";
+
   return {
     title,
     description,
@@ -53,7 +55,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url: `https://tallerexpress.one/blog/${article.slug}`,
       images: [
         {
-          url: `/images/blog/${article.slug}/ilustraciones/og-${article.slug}.jpg`,
+          url: `/images/blog/${article.slug}/ilustraciones/og-${article.slug}.${ogExtension}`,
           width: 1200,
           height: 630,
           alt: article.title,
