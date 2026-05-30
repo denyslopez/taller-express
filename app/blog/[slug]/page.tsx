@@ -58,7 +58,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
           url: `/images/blog/${article.slug}/ilustraciones/og-${article.slug}.${ogExtension}`,
           width: 1200,
           height: 630,
-          alt: article.title,
+          alt: article.ogImageAlt || article.title,
         }
       ]
     },

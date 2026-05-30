@@ -20,6 +20,7 @@ export interface ArticleFrontmatter {
   seoDescription?: string;
   ogTitle?: string;
   ogDescription?: string;
+  ogImageAlt?: string;
 }
 
 export interface Article extends ArticleFrontmatter {
@@ -66,6 +67,7 @@ export async function parseArticleFile(filename: string): Promise<Article> {
     seoDescription: data.seoDescription || undefined,
     ogTitle: data.ogTitle || undefined,
     ogDescription: data.ogDescription || undefined,
+    ogImageAlt: data.ogImageAlt || undefined,
   };
 
   // Validate required frontmatter fields (CLAUDE.md Capa 8)
