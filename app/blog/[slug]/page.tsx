@@ -35,12 +35,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
+  // Use custom SEO fields if present, fallback to defaults
+  const title = article.seoTitle || `${article.title} | Taller Express`;
+  const description = article.seoDescription || article.excerpt;
+  const ogTitle = article.ogTitle || article.title;
+  const ogDescription = article.ogDescription || article.excerpt;
+
   return {
-    title: article.title,
-    description: article.excerpt,
+    title,
+    description,
     openGraph: {
-      title: article.title,
-      description: article.excerpt,
+      title: ogTitle,
+      description: ogDescription,
       type: "article",
       locale: "es_SV",
       publishedTime: article.date,
