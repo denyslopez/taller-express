@@ -92,6 +92,9 @@ export default function EmailCapture({
         {showName && (
           <input
             type="text"
+            id={`name-${tag}`}
+            name="name"
+            autoComplete="name"
             value={name}
             onChange={(e) => setName(e.target.value)}
             disabled={status === "loading"}
@@ -111,6 +114,9 @@ export default function EmailCapture({
         <div className={clsx("flex gap-2.5 w-full", forceCol ? "flex-col" : "flex-col sm:flex-row")}>
           <input
             type="email"
+            id={`email-${tag}`}
+            name="email"
+            autoComplete="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             disabled={status === "loading"}
