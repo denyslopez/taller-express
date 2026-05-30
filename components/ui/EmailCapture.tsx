@@ -87,8 +87,8 @@ export default function EmailCapture({
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-3 w-full max-w-md mx-auto">
-      <div className={clsx("flex flex-col gap-2.5", (showName || forceCol) ? "flex-col" : "sm:flex-col lg:flex-row")}>
+    <form onSubmit={handleSubmit} className={clsx("flex flex-col gap-3 w-full max-w-md", compact && "mx-auto")}>
+      <div className={clsx("flex flex-col gap-2.5 w-full", (showName || forceCol) ? "flex-col" : "sm:flex-row")}>
         {showName && (
           <input
             type="text"
@@ -108,7 +108,7 @@ export default function EmailCapture({
           />
         )}
 
-        <div className={clsx("flex flex-col gap-2.5 w-full", forceCol ? "flex-col" : "sm:flex-col lg:flex-row")}>
+        <div className={clsx("flex gap-2.5 w-full", forceCol ? "flex-col" : "flex-col sm:flex-row")}>
           <input
             type="email"
             value={email}
@@ -118,7 +118,7 @@ export default function EmailCapture({
             required
             className={clsx(
               "font-body text-[14.4px] border outline-none transition-all duration-300",
-              forceCol ? "w-full" : "w-full lg:w-auto lg:flex-grow",
+              forceCol ? "w-full" : "w-full sm:w-auto sm:flex-grow",
               compact ? "px-5 py-3" : "px-6 py-4",
               variant === "dark"
                 ? "bg-white/10 border-white/10 text-white placeholder-zinc-500 focus:border-te-orange/50 focus:bg-white/15"
@@ -132,7 +132,7 @@ export default function EmailCapture({
             disabled={status === "loading"}
             className={clsx(
               "font-body font-bold text-[14.4px] text-[#111111] transition-all duration-300 select-none shrink-0",
-              forceCol ? "w-full" : "w-full lg:w-auto",
+              forceCol ? "w-full" : "w-full sm:w-auto",
               compact ? "px-5 py-3" : "px-8 py-4",
               status === "loading"
                 ? "bg-te-orange/50 cursor-not-allowed"
