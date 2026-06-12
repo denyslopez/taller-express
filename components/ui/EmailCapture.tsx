@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { clsx } from "clsx";
+import { useMailerLite } from "@/hooks/useMailerLite";
 
 interface EmailCaptureProps {
   tag: string; // 'hero-home' | 'leadmagnet-home' | 'intriga-home' | 'end-article' | 'guia-page'
@@ -24,63 +25,32 @@ export default function EmailCapture({
 }: EmailCaptureProps) {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
-  const [errorMessage, setErrorMessage] = useState("");
+  const { status, message, submit } = useMailerLite();
+
+  const formType = (tag === "hero-home" || tag === "intriga-home") ? "waitlist" : "lead-magnet";
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Reset status
-    setStatus("loading");
-    setErrorMessage("");
-
-    // Client-side validations
     if (!email || !email.includes("@")) {
-      setStatus("error");
-      setErrorMessage("Por favor, ingresa un correo electrónico válido.");
       return;
     }
 
     if (showName && !name.trim()) {
-      setStatus("error");
-      setErrorMessage("Por favor, ingresa tu nombre.");
       return;
     }
 
-    try {
-      const response = await fetch("/api/subscribe", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, name, tag }),
-      });
-
-      const data = await response.json();
-
-      if (response.ok && data.success) {
-        setStatus("success");
-        setEmail("");
-        setName("");
-      } else {
-        setStatus("error");
-        setErrorMessage(data.error || "Ocurrió un error. Intenta nuevamente.");
-      }
-    } catch (err) {
-      console.error("Subscription error:", err);
-      setStatus("error");
-      setErrorMessage("Error de conexión. Intenta de nuevo más tarde.");
-    }
+    await submit(email, formType);
   };
 
   if (status === "success") {
     return (
-      <div className="p-6 rounded-[18px] bg-te-orange/10 border border-te-orange/30 max-w-md w-full">
+      <div className="p-6 rounded-[18px] bg-te-orange/10 border border-te-orange/30 max-w-md w-full animate-fadeIn">
         <h3 className="font-display text-lg font-semibold text-te-text mb-1">
-          ¡Listo! Te has registrado
+          {formType === "waitlist" ? "¡Listo! Te has registrado" : "¡Revisá tu correo!"}
         </h3>
         <p className="font-body text-[14px] text-te-muted">
-          Te avisaremos en cuanto tengamos novedades. Gracias por tu confianza.
+          {message}
         </p>
       </div>
     );
@@ -152,7 +122,7 @@ export default function EmailCapture({
       </div>
 
       {status === "error" && (
-        <p className="text-red-400 font-body text-[12.8px] px-2">{errorMessage}</p>
+        <p className="text-red-400 font-body text-[12.8px] px-2">{message}</p>
       )}
     </form>
   );

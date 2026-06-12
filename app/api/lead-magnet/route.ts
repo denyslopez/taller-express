@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 
 const MAILERLITE_API_KEY = process.env.MAILERLITE_API_KEY!
-const GROUP_ID = process.env.MAILERLITE_WAITLIST_GROUP_ID!
+const GROUP_ID = process.env.MAILERLITE_LEADMAGNET_GROUP_ID!
 
 export async function POST(req: NextRequest) {
   try {
@@ -24,6 +24,9 @@ export async function POST(req: NextRequest) {
       body: JSON.stringify({
         email,
         groups: [GROUP_ID],
+        fields: {
+          last_name: 'Lead Magnet - Guia'
+        }
       }),
     })
 
@@ -32,14 +35,14 @@ export async function POST(req: NextRequest) {
     }
 
     const errorData = await res.json()
-    console.error('[/api/subscribe] MailerLite error:', errorData)
+    console.error('[/api/lead-magnet] MailerLite error:', errorData)
     return NextResponse.json(
-      { error: 'Error al suscribir' },
+      { error: 'Error al procesar solicitud' },
       { status: res.status }
     )
 
   } catch (error) {
-    console.error('[/api/subscribe] Error:', error)
+    console.error('[/api/lead-magnet] Error:', error)
     return NextResponse.json(
       { error: 'Error interno del servidor' },
       { status: 500 }
