@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   description: "Política de Privacidad de Taller Express El Salvador.",
 };
 
+const SERVICE_PRIVACY_NOTICE_URL =
+  "https://service-operations-platform-product.vercel.app/privacy";
+
 export default function PrivacidadPage() {
   return (
     <section className="py-20 px-8 bg-te-bg min-h-screen">
@@ -16,7 +19,7 @@ export default function PrivacidadPage() {
             Política de Privacidad
           </h1>
           <p className="font-body text-te-subtle text-[12.8px]">
-            Última actualización: 27 de mayo, 2026
+            Última actualización: 17 de septiembre, 2026
           </p>
         </div>
 
@@ -25,7 +28,34 @@ export default function PrivacidadPage() {
         {/* Prose Content */}
         <div className="prose text-zinc-300 flex flex-col gap-6 text-[14.4px] leading-relaxed">
           <p>
-            En <strong>Taller Express</strong>, valoramos y respetamos tu privacidad. Esta Política de Privacidad describe cómo recopilamos, utilizamos y protegemos tu información personal cuando te registras en nuestras listas de espera, descargas nuestras guías o navegas por nuestro sitio web.
+            Esta página es el <strong>canal oficial de publicación y comunicación de cambios de privacidad de Taller Express</strong>. Aquí distinguimos el tratamiento de datos relacionado con nuestro sitio web, blog y comunicaciones del tratamiento aplicable al flujo de solicitud y seguimiento de servicios automotrices.
+          </p>
+
+          <h2 className="font-display font-normal text-xl text-te-text mt-4">
+            Aviso de Privacidad del servicio automotriz
+          </h2>
+          <p>
+            Cuando utilices el flujo de solicitud y seguimiento de servicios de Taller Express, aplica el Aviso de Privacidad operativo del servicio. Puedes consultarlo en el siguiente enlace oficial:
+          </p>
+          <p>
+            <a
+              href={SERVICE_PRIVACY_NOTICE_URL}
+              className="text-te-accent underline underline-offset-4"
+            >
+              Consultar el Aviso de Privacidad del servicio Taller Express
+            </a>
+          </p>
+          <p>
+            El acceso al servicio puede permanecer cerrado mientras finaliza la preparación de lanzamiento. Este canal público continuará comunicando cualquier cambio relevante al aviso.
+          </p>
+
+          <hr className="w-full border-t border-te-glass-border my-2" />
+
+          <h2 className="font-display font-normal text-xl text-te-text mt-4">
+            Privacidad del sitio web, blog y comunicaciones
+          </h2>
+          <p>
+            En <strong>Taller Express</strong>, valoramos y respetamos tu privacidad. Esta sección describe cómo recopilamos, utilizamos y protegemos tu información personal cuando te registras en nuestras listas de espera, descargas nuestras guías o navegas por nuestro sitio web.
           </p>
 
           <h2 className="font-display font-normal text-xl text-te-text mt-4">
@@ -62,7 +92,7 @@ export default function PrivacidadPage() {
             4. Control sobre tu información
           </h2>
           <p>
-            Puedes cancelar tu suscripción en cualquier momento haciendo clic en el enlace "Darse de baja" que se encuentra al final de cualquiera de nuestros correos electrónicos, o enviándonos un mensaje directo.
+            Puedes cancelar tu suscripción en cualquier momento haciendo clic en el enlace &quot;Darse de baja&quot; que se encuentra al final de cualquiera de nuestros correos electrónicos, o enviándonos un mensaje directo.
           </p>
         </div>
 
